@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="71ac89fb6eba4857b48b90684aea38f8" Name="Diagram1">
+        <EntityTypeShape EntityType="ScooterRentalModel.Maintenance" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.Parking" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.Rentals" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.Review" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.Roles" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.Status" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.Subscription" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.Tariffs" Width="1.5" PointX="6" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.TypeOfMaintenance" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.User" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.Vechicles" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.Vechicles_Models" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.Vechicles_Types" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <AssociationConnector Association="ScooterRentalModel.FK__Maintenan__Statu__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="ScooterRentalModel.FK__Maintenan__TypeI__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="ScooterRentalModel.FK__Maintenan__UserI__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="ScooterRentalModel.FK__Maintenan__Vechi__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="ScooterRentalModel.FK__Vechicles__Parki__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="ScooterRentalModel.FK__Rentals__PayStat__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="ScooterRentalModel.FK__Rentals__TarifID__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="ScooterRentalModel.FK__Rentals__UserID__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="ScooterRentalModel.FK__Rentals__Vechicl__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="ScooterRentalModel.FK__Review__UserID__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="ScooterRentalModel.FK__Review__Vechicle__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="ScooterRentalModel.FK__User__RoleID__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="ScooterRentalModel.FK__User__SubID__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="ScooterRentalModel.FK__Vechicles__TypeI__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="ScooterRentalModel.FK_Vechicles_Vechicles_Models" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,994 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ScooterRentalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Maintenance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="VechicleID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+          <Property Name="Start_time" Type="datetime" Nullable="false" />
+          <Property Name="End_time" Type="datetime" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parking">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Addres" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rentals">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="VechicleID" Type="int" Nullable="false" />
+          <Property Name="Start_time" Type="datetime" Nullable="false" />
+          <Property Name="End_time" Type="datetime" Nullable="false" />
+          <Property Name="TarifID" Type="int" Nullable="false" />
+          <Property Name="Sum" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="PayStatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="VechiclesID" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="255" />
+          <Property Name="Rate" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subscription">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sale" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tariffs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Sum" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Start_cost" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeOfMaintenance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Age" Type="date" Nullable="false" />
+          <Property Name="Phone_number" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="UserStatus" Type="bit" Nullable="false" />
+          <Property Name="SubID" Type="int" Nullable="false" />
+          <Property Name="IsFine" Type="bit" />
+          <Property Name="FineSum" Type="decimal" Precision="6" Scale="2" />
+        </EntityType>
+        <EntityType Name="Vechicles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+          <Property Name="ModelID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Rating" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+          <Property Name="ParkingID" Type="int" Nullable="false" />
+          <Property Name="Energy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vechicles_Models">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Model_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vechicles_Types">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Type_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Maintenan__Statu__60A75C0F">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maintenan__TypeI__5FB337D6">
+          <End Role="TypeOfMaintenance" Type="Self.TypeOfMaintenance" Multiplicity="1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfMaintenance">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maintenan__UserI__5DCAEF64">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maintenan__Vechi__5EBF139D">
+          <End Role="Vechicles" Type="Self.Vechicles" Multiplicity="1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vechicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="VechicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rentals__PayStat__5CD6CB2B">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Rentals" Type="Self.Rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rentals">
+              <PropertyRef Name="PayStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rentals__TarifID__5BE2A6F2">
+          <End Role="Tariffs" Type="Self.Tariffs" Multiplicity="1" />
+          <End Role="Rentals" Type="Self.Rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tariffs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rentals">
+              <PropertyRef Name="TarifID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rentals__UserID__59FA5E80">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Rentals" Type="Self.Rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rentals">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rentals__Vechicl__5AEE82B9">
+          <End Role="Vechicles" Type="Self.Vechicles" Multiplicity="1" />
+          <End Role="Rentals" Type="Self.Rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vechicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rentals">
+              <PropertyRef Name="VechicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Review__UserID__59063A47">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Review__Vechicle__5812160E">
+          <End Role="Vechicles" Type="Self.Vechicles" Multiplicity="1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vechicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="VechiclesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__RoleID__571DF1D5">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__SubID__628FA481">
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="SubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vechicles__Parki__5629CD9C">
+          <End Role="Parking" Type="Self.Parking" Multiplicity="1" />
+          <End Role="Vechicles" Type="Self.Vechicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parking">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vechicles">
+              <PropertyRef Name="ParkingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vechicles__TypeI__5535A963">
+          <End Role="Vechicles_Types" Type="Self.Vechicles_Types" Multiplicity="1" />
+          <End Role="Vechicles" Type="Self.Vechicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vechicles_Types">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vechicles">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vechicles_Vechicles_Models">
+          <End Role="Vechicles_Models" Type="Self.Vechicles_Models" Multiplicity="1" />
+          <End Role="Vechicles" Type="Self.Vechicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vechicles_Models">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vechicles">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ScooterRentalModelContainer">
+          <EntitySet Name="Maintenance" EntityType="Self.Maintenance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parking" EntityType="Self.Parking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rentals" EntityType="Self.Rentals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscription" EntityType="Self.Subscription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tariffs" EntityType="Self.Tariffs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOfMaintenance" EntityType="Self.TypeOfMaintenance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vechicles" EntityType="Self.Vechicles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vechicles_Models" EntityType="Self.Vechicles_Models" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vechicles_Types" EntityType="Self.Vechicles_Types" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Maintenan__Statu__60A75C0F" Association="Self.FK__Maintenan__Statu__60A75C0F">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Maintenance" EntitySet="Maintenance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maintenan__TypeI__5FB337D6" Association="Self.FK__Maintenan__TypeI__5FB337D6">
+            <End Role="TypeOfMaintenance" EntitySet="TypeOfMaintenance" />
+            <End Role="Maintenance" EntitySet="Maintenance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maintenan__UserI__5DCAEF64" Association="Self.FK__Maintenan__UserI__5DCAEF64">
+            <End Role="User" EntitySet="User" />
+            <End Role="Maintenance" EntitySet="Maintenance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maintenan__Vechi__5EBF139D" Association="Self.FK__Maintenan__Vechi__5EBF139D">
+            <End Role="Vechicles" EntitySet="Vechicles" />
+            <End Role="Maintenance" EntitySet="Maintenance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rentals__PayStat__5CD6CB2B" Association="Self.FK__Rentals__PayStat__5CD6CB2B">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Rentals" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rentals__TarifID__5BE2A6F2" Association="Self.FK__Rentals__TarifID__5BE2A6F2">
+            <End Role="Tariffs" EntitySet="Tariffs" />
+            <End Role="Rentals" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rentals__UserID__59FA5E80" Association="Self.FK__Rentals__UserID__59FA5E80">
+            <End Role="User" EntitySet="User" />
+            <End Role="Rentals" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rentals__Vechicl__5AEE82B9" Association="Self.FK__Rentals__Vechicl__5AEE82B9">
+            <End Role="Vechicles" EntitySet="Vechicles" />
+            <End Role="Rentals" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Review__UserID__59063A47" Association="Self.FK__Review__UserID__59063A47">
+            <End Role="User" EntitySet="User" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Review__Vechicle__5812160E" Association="Self.FK__Review__Vechicle__5812160E">
+            <End Role="Vechicles" EntitySet="Vechicles" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__RoleID__571DF1D5" Association="Self.FK__User__RoleID__571DF1D5">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__SubID__628FA481" Association="Self.FK__User__SubID__628FA481">
+            <End Role="Subscription" EntitySet="Subscription" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vechicles__Parki__5629CD9C" Association="Self.FK__Vechicles__Parki__5629CD9C">
+            <End Role="Parking" EntitySet="Parking" />
+            <End Role="Vechicles" EntitySet="Vechicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vechicles__TypeI__5535A963" Association="Self.FK__Vechicles__TypeI__5535A963">
+            <End Role="Vechicles_Types" EntitySet="Vechicles_Types" />
+            <End Role="Vechicles" EntitySet="Vechicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vechicles_Vechicles_Models" Association="Self.FK_Vechicles_Vechicles_Models">
+            <End Role="Vechicles_Models" EntitySet="Vechicles_Models" />
+            <End Role="Vechicles" EntitySet="Vechicles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ScooterRentalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Maintenance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="VechicleID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <Property Name="Start_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="End_time" Type="DateTime" Precision="3" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Status" Relationship="Self.FK__Maintenan__Statu__60A75C0F" FromRole="Maintenance" ToRole="Status" />
+          <NavigationProperty Name="TypeOfMaintenance" Relationship="Self.FK__Maintenan__TypeI__5FB337D6" FromRole="Maintenance" ToRole="TypeOfMaintenance" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Maintenan__UserI__5DCAEF64" FromRole="Maintenance" ToRole="User" />
+          <NavigationProperty Name="Vechicles" Relationship="Self.FK__Maintenan__Vechi__5EBF139D" FromRole="Maintenance" ToRole="Vechicles" />
+        </EntityType>
+        <EntityType Name="Parking">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Addres" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vechicles" Relationship="Self.FK__Vechicles__Parki__5629CD9C" FromRole="Parking" ToRole="Vechicles" />
+        </EntityType>
+        <EntityType Name="Rentals">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="VechicleID" Type="Int32" Nullable="false" />
+          <Property Name="Start_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="End_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TarifID" Type="Int32" Nullable="false" />
+          <Property Name="Sum" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="PayStatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Status" Relationship="Self.FK__Rentals__PayStat__5CD6CB2B" FromRole="Rentals" ToRole="Status" />
+          <NavigationProperty Name="Tariffs" Relationship="Self.FK__Rentals__TarifID__5BE2A6F2" FromRole="Rentals" ToRole="Tariffs" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Rentals__UserID__59FA5E80" FromRole="Rentals" ToRole="User" />
+          <NavigationProperty Name="Vechicles" Relationship="Self.FK__Rentals__Vechicl__5AEE82B9" FromRole="Rentals" ToRole="Vechicles" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="VechiclesID" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Rate" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Review__UserID__59063A47" FromRole="Review" ToRole="User" />
+          <NavigationProperty Name="Vechicles" Relationship="Self.FK__Review__Vechicle__5812160E" FromRole="Review" ToRole="Vechicles" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK__User__RoleID__571DF1D5" FromRole="Roles" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Maintenance" Relationship="Self.FK__Maintenan__Statu__60A75C0F" FromRole="Status" ToRole="Maintenance" />
+          <NavigationProperty Name="Rentals" Relationship="Self.FK__Rentals__PayStat__5CD6CB2B" FromRole="Status" ToRole="Rentals" />
+        </EntityType>
+        <EntityType Name="Subscription">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sale" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK__User__SubID__628FA481" FromRole="Subscription" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tariffs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Sum" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Start_cost" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Rentals" Relationship="Self.FK__Rentals__TarifID__5BE2A6F2" FromRole="Tariffs" ToRole="Rentals" />
+        </EntityType>
+        <EntityType Name="TypeOfMaintenance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Maintenance" Relationship="Self.FK__Maintenan__TypeI__5FB337D6" FromRole="TypeOfMaintenance" ToRole="Maintenance" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Age" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Phone_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="UserStatus" Type="Boolean" Nullable="false" />
+          <Property Name="SubID" Type="Int32" Nullable="false" />
+          <Property Name="IsFine" Type="Boolean" />
+          <Property Name="FineSum" Type="Decimal" Precision="6" Scale="2" />
+          <NavigationProperty Name="Maintenance" Relationship="Self.FK__Maintenan__UserI__5DCAEF64" FromRole="User" ToRole="Maintenance" />
+          <NavigationProperty Name="Rentals" Relationship="Self.FK__Rentals__UserID__59FA5E80" FromRole="User" ToRole="Rentals" />
+          <NavigationProperty Name="Review" Relationship="Self.FK__Review__UserID__59063A47" FromRole="User" ToRole="Review" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK__User__RoleID__571DF1D5" FromRole="User" ToRole="Roles" />
+          <NavigationProperty Name="Subscription" Relationship="Self.FK__User__SubID__628FA481" FromRole="User" ToRole="Subscription" />
+        </EntityType>
+        <EntityType Name="Vechicles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <Property Name="ModelID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Rating" Type="Decimal" Precision="2" Scale="1" Nullable="false" />
+          <Property Name="ParkingID" Type="Int32" Nullable="false" />
+          <Property Name="Energy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Maintenance" Relationship="Self.FK__Maintenan__Vechi__5EBF139D" FromRole="Vechicles" ToRole="Maintenance" />
+          <NavigationProperty Name="Parking" Relationship="Self.FK__Vechicles__Parki__5629CD9C" FromRole="Vechicles" ToRole="Parking" />
+          <NavigationProperty Name="Rentals" Relationship="Self.FK__Rentals__Vechicl__5AEE82B9" FromRole="Vechicles" ToRole="Rentals" />
+          <NavigationProperty Name="Review" Relationship="Self.FK__Review__Vechicle__5812160E" FromRole="Vechicles" ToRole="Review" />
+          <NavigationProperty Name="Vechicles_Types" Relationship="Self.FK__Vechicles__TypeI__5535A963" FromRole="Vechicles" ToRole="Vechicles_Types" />
+          <NavigationProperty Name="Vechicles_Models" Relationship="Self.FK_Vechicles_Vechicles_Models" FromRole="Vechicles" ToRole="Vechicles_Models" />
+        </EntityType>
+        <EntityType Name="Vechicles_Models">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Model_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vechicles" Relationship="Self.FK_Vechicles_Vechicles_Models" FromRole="Vechicles_Models" ToRole="Vechicles" />
+        </EntityType>
+        <EntityType Name="Vechicles_Types">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Type_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vechicles" Relationship="Self.FK__Vechicles__TypeI__5535A963" FromRole="Vechicles_Types" ToRole="Vechicles" />
+        </EntityType>
+        <Association Name="FK__Maintenan__Statu__60A75C0F">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maintenan__TypeI__5FB337D6">
+          <End Role="TypeOfMaintenance" Type="Self.TypeOfMaintenance" Multiplicity="1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfMaintenance">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maintenan__UserI__5DCAEF64">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maintenan__Vechi__5EBF139D">
+          <End Role="Vechicles" Type="Self.Vechicles" Multiplicity="1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vechicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="VechicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vechicles__Parki__5629CD9C">
+          <End Role="Parking" Type="Self.Parking" Multiplicity="1" />
+          <End Role="Vechicles" Type="Self.Vechicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parking">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vechicles">
+              <PropertyRef Name="ParkingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rentals__PayStat__5CD6CB2B">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Rentals" Type="Self.Rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rentals">
+              <PropertyRef Name="PayStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rentals__TarifID__5BE2A6F2">
+          <End Role="Tariffs" Type="Self.Tariffs" Multiplicity="1" />
+          <End Role="Rentals" Type="Self.Rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tariffs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rentals">
+              <PropertyRef Name="TarifID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rentals__UserID__59FA5E80">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Rentals" Type="Self.Rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rentals">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rentals__Vechicl__5AEE82B9">
+          <End Role="Vechicles" Type="Self.Vechicles" Multiplicity="1" />
+          <End Role="Rentals" Type="Self.Rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vechicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rentals">
+              <PropertyRef Name="VechicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Review__UserID__59063A47">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Review__Vechicle__5812160E">
+          <End Role="Vechicles" Type="Self.Vechicles" Multiplicity="1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vechicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="VechiclesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__RoleID__571DF1D5">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__SubID__628FA481">
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="SubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vechicles__TypeI__5535A963">
+          <End Role="Vechicles_Types" Type="Self.Vechicles_Types" Multiplicity="1" />
+          <End Role="Vechicles" Type="Self.Vechicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vechicles_Types">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vechicles">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vechicles_Vechicles_Models">
+          <End Role="Vechicles_Models" Type="Self.Vechicles_Models" Multiplicity="1" />
+          <End Role="Vechicles" Type="Self.Vechicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vechicles_Models">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vechicles">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ScooterRentalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Maintenance" EntityType="Self.Maintenance" />
+          <EntitySet Name="Parking" EntityType="Self.Parking" />
+          <EntitySet Name="Rentals" EntityType="Self.Rentals" />
+          <EntitySet Name="Review" EntityType="Self.Review" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Subscription" EntityType="Self.Subscription" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tariffs" EntityType="Self.Tariffs" />
+          <EntitySet Name="TypeOfMaintenance" EntityType="Self.TypeOfMaintenance" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="Vechicles" EntityType="Self.Vechicles" />
+          <EntitySet Name="Vechicles_Models" EntityType="Self.Vechicles_Models" />
+          <EntitySet Name="Vechicles_Types" EntityType="Self.Vechicles_Types" />
+          <AssociationSet Name="FK__Maintenan__Statu__60A75C0F" Association="Self.FK__Maintenan__Statu__60A75C0F">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Maintenance" EntitySet="Maintenance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maintenan__TypeI__5FB337D6" Association="Self.FK__Maintenan__TypeI__5FB337D6">
+            <End Role="TypeOfMaintenance" EntitySet="TypeOfMaintenance" />
+            <End Role="Maintenance" EntitySet="Maintenance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maintenan__UserI__5DCAEF64" Association="Self.FK__Maintenan__UserI__5DCAEF64">
+            <End Role="User" EntitySet="User" />
+            <End Role="Maintenance" EntitySet="Maintenance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maintenan__Vechi__5EBF139D" Association="Self.FK__Maintenan__Vechi__5EBF139D">
+            <End Role="Vechicles" EntitySet="Vechicles" />
+            <End Role="Maintenance" EntitySet="Maintenance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vechicles__Parki__5629CD9C" Association="Self.FK__Vechicles__Parki__5629CD9C">
+            <End Role="Parking" EntitySet="Parking" />
+            <End Role="Vechicles" EntitySet="Vechicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rentals__PayStat__5CD6CB2B" Association="Self.FK__Rentals__PayStat__5CD6CB2B">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Rentals" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rentals__TarifID__5BE2A6F2" Association="Self.FK__Rentals__TarifID__5BE2A6F2">
+            <End Role="Tariffs" EntitySet="Tariffs" />
+            <End Role="Rentals" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rentals__UserID__59FA5E80" Association="Self.FK__Rentals__UserID__59FA5E80">
+            <End Role="User" EntitySet="User" />
+            <End Role="Rentals" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rentals__Vechicl__5AEE82B9" Association="Self.FK__Rentals__Vechicl__5AEE82B9">
+            <End Role="Vechicles" EntitySet="Vechicles" />
+            <End Role="Rentals" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Review__UserID__59063A47" Association="Self.FK__Review__UserID__59063A47">
+            <End Role="User" EntitySet="User" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Review__Vechicle__5812160E" Association="Self.FK__Review__Vechicle__5812160E">
+            <End Role="Vechicles" EntitySet="Vechicles" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__RoleID__571DF1D5" Association="Self.FK__User__RoleID__571DF1D5">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__SubID__628FA481" Association="Self.FK__User__SubID__628FA481">
+            <End Role="Subscription" EntitySet="Subscription" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vechicles__TypeI__5535A963" Association="Self.FK__Vechicles__TypeI__5535A963">
+            <End Role="Vechicles_Types" EntitySet="Vechicles_Types" />
+            <End Role="Vechicles" EntitySet="Vechicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vechicles_Vechicles_Models" Association="Self.FK_Vechicles_Vechicles_Models">
+            <End Role="Vechicles_Models" EntitySet="Vechicles_Models" />
+            <End Role="Vechicles" EntitySet="Vechicles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ScooterRentalModelContainer" CdmEntityContainer="ScooterRentalEntities">
+          <EntitySetMapping Name="Maintenance">
+            <EntityTypeMapping TypeName="ScooterRentalModel.Maintenance">
+              <MappingFragment StoreEntitySet="Maintenance">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VechicleID" ColumnName="VechicleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="Start_time" ColumnName="Start_time" />
+                <ScalarProperty Name="End_time" ColumnName="End_time" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parking">
+            <EntityTypeMapping TypeName="ScooterRentalModel.Parking">
+              <MappingFragment StoreEntitySet="Parking">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Addres" ColumnName="Addres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rentals">
+            <EntityTypeMapping TypeName="ScooterRentalModel.Rentals">
+              <MappingFragment StoreEntitySet="Rentals">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="VechicleID" ColumnName="VechicleID" />
+                <ScalarProperty Name="Start_time" ColumnName="Start_time" />
+                <ScalarProperty Name="End_time" ColumnName="End_time" />
+                <ScalarProperty Name="TarifID" ColumnName="TarifID" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="PayStatusID" ColumnName="PayStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Review">
+            <EntityTypeMapping TypeName="ScooterRentalModel.Review">
+              <MappingFragment StoreEntitySet="Review">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="VechiclesID" ColumnName="VechiclesID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="ScooterRentalModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="ScooterRentalModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscription">
+            <EntityTypeMapping TypeName="ScooterRentalModel.Subscription">
+              <MappingFragment StoreEntitySet="Subscription">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sale" ColumnName="Sale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ScooterRentalModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tariffs">
+            <EntityTypeMapping TypeName="ScooterRentalModel.Tariffs">
+              <MappingFragment StoreEntitySet="Tariffs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="Start_cost" ColumnName="Start_cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOfMaintenance">
+            <EntityTypeMapping TypeName="ScooterRentalModel.TypeOfMaintenance">
+              <MappingFragment StoreEntitySet="TypeOfMaintenance">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="ScooterRentalModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Phone_number" ColumnName="Phone_number" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="SubID" ColumnName="SubID" />
+                <ScalarProperty Name="IsFine" ColumnName="IsFine" />
+                <ScalarProperty Name="FineSum" ColumnName="FineSum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vechicles">
+            <EntityTypeMapping TypeName="ScooterRentalModel.Vechicles">
+              <MappingFragment StoreEntitySet="Vechicles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="ParkingID" ColumnName="ParkingID" />
+                <ScalarProperty Name="Energy" ColumnName="Energy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vechicles_Models">
+            <EntityTypeMapping TypeName="ScooterRentalModel.Vechicles_Models">
+              <MappingFragment StoreEntitySet="Vechicles_Models">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Model_name" ColumnName="Model_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vechicles_Types">
+            <EntityTypeMapping TypeName="ScooterRentalModel.Vechicles_Types">
+              <MappingFragment StoreEntitySet="Vechicles_Types">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type_name" ColumnName="Type_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

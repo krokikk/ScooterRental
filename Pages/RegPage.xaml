@@ -1,0 +1,43 @@
+﻿<Page x:Class="ScooterRental.Pages.RegPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ScooterRental.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Style="{DynamicResource dark}"
+      Title="RegPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="РЕГИСТРАЦИЯ" Grid.Row="0" Margin="20" Style="{DynamicResource TextOutBorder}"/>
+        <StackPanel Grid.Row="1">
+            <Border Width="300" Style="{DynamicResource StackBorder}">
+                <StackPanel>
+                    <TextBlock Text="Введите ФИО: "/>
+                    <TextBox x:Name="FioTB"/>
+                    <TextBlock Text="Введите логин: "/>
+                    <TextBox x:Name="LoginTB"/>
+                    <TextBlock Text="Введите пароль: "/>
+                    <PasswordBox x:Name="PasswordPB"/>
+                    <TextBlock Text="Повторите пароль: "/>
+                    <PasswordBox x:Name="Password2PB"/>
+                    <TextBlock Text="Введите дату рождения: "/>
+                    <DatePicker x:Name="AgeDP"/>
+                    <TextBlock Text="Введите номер телефона: "/>
+                    <TextBox x:Name="NumberTB"/>
+                    <Button Content="Зарегистрироваться" Click="Reg_Click" Margin="3,20,3,5" Style="{DynamicResource ReverseButton}"/>
+                 </StackPanel>
+            </Border>
+            <StackPanel>
+                <TextBlock Margin="0,40, 0, 0" Text="Уже есть аккаунт?" Style="{DynamicResource TextOutBorder}"/>
+                    <Button Content="Войти" Click="Auth_Click" Width="200" />
+                </StackPanel>
+            </StackPanel>
+      </Grid>
+</Page>

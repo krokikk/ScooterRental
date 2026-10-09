@@ -1,0 +1,70 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="Page" x:Key="dark">
+        <Setter Property="Background" Value="#9b3f47"/>
+    </Style>
+
+    <Style TargetType="Border" x:Key="StackBorder">
+        <Setter Property="BorderBrush" Value="#7a2e18"/>
+        <Setter Property="Background" Value="#e4a2a0"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="CornerRadius" Value="8"/>
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="Background" Value="#f5e6d6"/>
+        <Setter Property="Foreground" Value="#6b1e2a"/>
+        <Setter Property="Height" Value="27"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="ReverseButton">
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="Background" Value="#273751"/>
+        <Setter Property="Foreground" Value="#e5ded2"/>
+        <Setter Property="Height" Value="27"/>
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="Background" Value="#f5e6d6"/>
+        <Setter Property="Foreground" Value="#6b1e2a"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="TextOutBorder">
+        <Setter Property="Foreground" Value="#f5e6d6"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
+    <Style TargetType="PasswordBox">
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="Background" Value="#f5e6d6"/>
+        <Setter Property="Foreground" Value="#6b1e2a"/>
+    </Style>
+
+    <Style TargetType="TextBlock">
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="Foreground" Value="#6b1e2a"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+    </Style>
+
+    <Style TargetType="DatePicker">
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="Background" Value="#f5e6d6"/>
+        <Setter Property="Foreground" Value="#6b1e2a"/>
+    </Style>
+
+</ResourceDictionary>
+    
+
+     
