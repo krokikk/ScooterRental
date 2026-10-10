@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ScooterRental.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AuthPage"
+      Title="Страница авторизации"
       Style="{DynamicResource dark}">
 
     <Grid>
@@ -15,14 +15,17 @@
             <RowDefinition Height = "Auto"/>
         </Grid.RowDefinitions>
         <StackPanel>
-            <TextBlock Grid.Row="0" Text="АВТОРИЗАЦИЯ" Margin="20" Style="{DynamicResource TextOutBorder}"/>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="ChangeStyle" Click="ChangeTheme_Click" Content="Сменить тему" Margin="10" ToolTip="Смена темы приложения"/>
+                <TextBlock Grid.Row="0" Text="АВТОРИЗАЦИЯ" HorizontalAlignment="Center" Margin="275,20,20,20" Style="{DynamicResource TextOutBorder}"/>
+            </StackPanel>
             <Border x:Name="BorderAuth" Width="300" Style="{DynamicResource StackBorder}" Grid.Row="1" Visibility="Visible">
                 <StackPanel>
                     <TextBlock x:Name="LoginText" Text="Введите логин: " Visibility="Visible"/>
-                    <TextBox x:Name="LoginTB" Visibility="Visible"/>
+                    <TextBox x:Name="LoginTB" Visibility="Visible" ToolTip="Поле для логина"/>
                     <TextBlock x:Name="PasswordText" Text="Введите пароль: " Visibility="Visible"/>
-                    <PasswordBox x:Name="PasswordPB" Visibility="Visible"/>
-                    <Button x:Name="AuthBt" Content="Войти" Click="Enter_Click" Margin="3,20,3,5" Visibility="Visible"/>
+                    <PasswordBox x:Name="PasswordPB" Visibility="Visible" ToolTip="Поле для пароля"/>
+                    <Button x:Name="AuthBt" Content="Войти" Click="Enter_Click" Margin="3,20,3,5" Visibility="Visible" Style="{DynamicResource ReverseButton}"/>
                 </StackPanel>
             </Border>
             <StackPanel>
@@ -36,7 +39,8 @@
                         Visibility="Collapsed" x:Name="captcha" Height="42" FontStyle="Italic" VerticalAlignment="Top" Width="156" HorizontalAlignment="Center"
                          FontStretch="UltraCondensed" IsReadOnly="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" />
                     <TextBox Visibility="Collapsed" x:Name="captchaInput" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
-                    <Button x:Name="submitCaptcha" Visibility="Collapsed" Height="34" Content="Подтвердить" ToolTip="Подтвердить ввод" Grid.Row="1" HorizontalAlignment="Center" Width="120" VerticalAlignment="Top" Click="submitCaptcha_Click" />
+                    <Button x:Name="submitCaptcha" Visibility="Collapsed" Height="34" Content="Подтвердить" ToolTip="Подтвердить ввод" Grid.Row="1" 
+                            HorizontalAlignment="Center" Width="120" VerticalAlignment="Top" Click="submitCaptcha_Click" Style="{DynamicResource ReverseButton}"/>
                 </StackPanel>
             </Border>
         </StackPanel>

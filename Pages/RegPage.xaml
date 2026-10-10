@@ -7,31 +7,33 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Style="{DynamicResource dark}"
-      Title="RegPage">
+      Title="Страница регистрации">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
-        <TextBlock Text="РЕГИСТРАЦИЯ" Grid.Row="0" Margin="20" Style="{DynamicResource TextOutBorder}"/>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="ChangeStyle" Click="ChangeTheme_Click" Content="Сменить тему" Margin="10" ToolTip="Смена темы приложения"/>
+            <TextBlock Text="РЕГИСТРАЦИЯ" Grid.Row="0" Margin="280,20,20,20" Style="{DynamicResource TextOutBorder}" />
+        </StackPanel>
         <StackPanel Grid.Row="1">
             <Border Width="300" Style="{DynamicResource StackBorder}">
                 <StackPanel>
                     <TextBlock Text="Введите ФИО: "/>
-                    <TextBox x:Name="FioTB"/>
+                    <TextBox x:Name="FioTB" ToolTip="Поле для ФИО"/>
                     <TextBlock Text="Введите логин: "/>
-                    <TextBox x:Name="LoginTB"/>
+                    <TextBox x:Name="LoginTB" ToolTip="Поле для логина"/>
                     <TextBlock Text="Введите пароль: "/>
-                    <PasswordBox x:Name="PasswordPB"/>
+                    <PasswordBox x:Name="PasswordPB" ToolTip="Поле для пароля"/>
                     <TextBlock Text="Повторите пароль: "/>
-                    <PasswordBox x:Name="Password2PB"/>
+                    <PasswordBox x:Name="Password2PB" ToolTip="Поле для подтверждения пароля"/>
                     <TextBlock Text="Введите дату рождения: "/>
                     <DatePicker x:Name="AgeDP"/>
                     <TextBlock Text="Введите номер телефона: "/>
-                    <TextBox x:Name="NumberTB"/>
-                    <Button Content="Зарегистрироваться" Click="Reg_Click" Margin="3,20,3,5" Style="{DynamicResource ReverseButton}"/>
+                    <TextBox x:Name="NumberTB" ToolTip="Поле для телефона"/>
+                    <Button Content="Зарегистрироваться" Click="Reg_Click" Margin="3,20,3,5" Style="{DynamicResource ReverseButton}" Foreground="#f5e6d6"/>
                  </StackPanel>
             </Border>
             <StackPanel>

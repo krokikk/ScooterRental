@@ -25,10 +25,10 @@ namespace ScooterRental.Pages
         {
             InitializeComponent();
 
-            var uri = new Uri("Styles/StyleNight.xaml", UriKind.Relative );
+           /* var uri = new Uri("Styles/StyleNight.xaml", UriKind.Relative );
             ResourceDictionary dict = Application.LoadComponent(uri) as ResourceDictionary;
             Application.Current.Resources.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(dict);
+            Application.Current.Resources.MergedDictionaries.Add(dict);*/
         }
 
 
@@ -117,6 +117,7 @@ namespace ScooterRental.Pages
 
         }
 
+        // хэширование пароля
         public static string GetHash(String password)
         {
             using (var hash = SHA1.Create())
@@ -127,10 +128,48 @@ namespace ScooterRental.Pages
             }
         }
 
-
+        // переход на сраницу авторизации
         private void Auth_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AuthPage());
         }
+
+        // переключение темы
+        private bool isDayTheme = true;
+        private void ChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+            string path;
+
+            if (isDayTheme == true)
+            {
+                path = "Styles/StyleNight.xaml";
+            }
+            else
+            {
+                path = "Styles/StyleDay.xaml";
+            }
+
+            var uri = new Uri(path, UriKind.Relative);
+
+            var resourceDict =
+                Application.LoadComponent(uri) as ResourceDictionary;
+
+            if (resourceDict != null)
+            {
+                Application.Current.Resources.MergedDictionaries.Clear();
+
+                Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+
+                if (isDayTheme == true)
+                {
+                    isDayTheme = false;
+                }
+                else
+                {
+                    isDayTheme = true;
+                }
+            }
+        }
+
     }
 }

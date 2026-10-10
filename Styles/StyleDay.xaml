@@ -12,7 +12,15 @@
         <Setter Property="Padding" Value="3"/>
         <Setter Property="CornerRadius" Value="8"/>
     </Style>
-
+    
+    <Style TargetType="Button" x:Key="ReverseButton">
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="Background" Value="#9b3f47"/>
+        <Setter Property="Foreground" Value="#e5ded2"/>
+        <Setter Property="Height" Value="27"/>
+    </Style>
+    
     <Style TargetType="Button">
         <Setter Property="Margin" Value="3"/>
         <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -21,13 +29,6 @@
         <Setter Property="Height" Value="27"/>
     </Style>
 
-    <Style TargetType="Button" x:Key="ReverseButton">
-        <Setter Property="Margin" Value="3"/>
-        <Setter Property="FontFamily" Value="Comic Sans MS"/>
-        <Setter Property="Background" Value="#273751"/>
-        <Setter Property="Foreground" Value="#e5ded2"/>
-        <Setter Property="Height" Value="27"/>
-    </Style>
 
     <Style TargetType="TextBox">
         <Setter Property="Height" Value="20"/>
@@ -59,6 +60,12 @@
     </Style>
 
     <Style TargetType="DatePicker">
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="Background" Value="#f5e6d6"/>
+        <Setter Property="Foreground" Value="#6b1e2a"/>
+    </Style>
+
+    <Style TargetType="ComboBox">
         <Setter Property="Margin" Value="3"/>
         <Setter Property="Background" Value="#f5e6d6"/>
         <Setter Property="Foreground" Value="#6b1e2a"/>

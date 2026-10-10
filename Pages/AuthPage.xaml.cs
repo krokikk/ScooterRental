@@ -25,10 +25,10 @@ namespace ScooterRental.Pages
         public AuthPage()
         {
             InitializeComponent();
-            var uri = new Uri("Styles/StyleDay.xaml", UriKind.Relative);
+            /*var uri = new Uri("Styles/StyleDay.xaml", UriKind.Relative);
             ResourceDictionary dict = Application.LoadComponent(uri) as ResourceDictionary;
             Application.Current.Resources.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(dict);
+            Application.Current.Resources.MergedDictionaries.Add(dict);*/
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
@@ -45,7 +45,18 @@ namespace ScooterRental.Pages
             {
                 if (currentUser.Password == GetHash(PasswordPB.Password))
                 {
-                    NavigationService.Navigate(new MainPage(currentUser));
+                    if (currentUser.RoleID == 1)
+                    {
+                        NavigationService.Navigate(new AdminPage());
+                    }
+                    else if(currentUser.RoleID == 3)
+                    {
+                        NavigationService.Navigate(new WorkerPage());
+                    }
+                    else
+                    {
+                        NavigationService.Navigate(new MainPage(currentUser));
+                    }
                 }
 
                 else
@@ -178,6 +189,43 @@ namespace ScooterRental.Pages
                 return
                 string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x =>
                 x.ToString("X2")));
+            }
+        }
+
+        private bool isDayTheme = true;
+
+        private void ChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+            string path;
+
+            if (isDayTheme == true)
+            {
+                path = "Styles/StyleNight.xaml";
+            }
+            else
+            {
+                path = "Styles/StyleDay.xaml";
+            }
+
+            var uri = new Uri(path, UriKind.Relative);
+
+            var resourceDict =
+                Application.LoadComponent(uri) as ResourceDictionary;
+
+            if (resourceDict != null)
+            {
+                Application.Current.Resources.MergedDictionaries.Clear();
+
+                Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+
+                if (isDayTheme == true)
+                {
+                    isDayTheme = false;
+                }
+                else
+                {
+                    isDayTheme = true;
+                }
             }
         }
     }

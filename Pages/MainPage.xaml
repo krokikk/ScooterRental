@@ -6,9 +6,28 @@
       xmlns:local="clr-namespace:ScooterRental.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainPage">
+      Style="{DynamicResource dark}"
+      Title="Главная страница">
 
     <Grid>
-        
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Сменить тему" ToolTip="Смена темы приложения" Click="ChangeTheme_Click" Margin="10"/>
+                <ComboBox x:Name="ChooseCB" Margin="10" SelectionChanged="ChooseCB_SelectionChanged"/>
+                <Button Content="Профиль" Click="ProfileClick" Margin="550,0,0,0"/>
+            </StackPanel>
+
+            <Grid>
+                <Image Source="/Images/map.png"/>
+                <StackPanel>
+                    <Button x:Name="Scooter1" Content="Выбрать" Click="ChooseClick1" Width="64"/>
+                    <Button x:Name="Bike1" Content="Выбрать" Click="ChooseClick2" Width="65"/>
+                    <Button x:Name="Scooter2" Content="Выбрать" Click="ChooseClick3" Width="65"/>
+                    <Button x:Name="Scooter3" Content="Выбрать" Click="ChooseClick4" Width="64"/>
+                    <Button x:Name="Bike2" Content="Выбрать" Click="ChooseClick5" Width="65"/>
+                    <Button x:Name="Scooter4" Content="Выбрать" Click="ChooseClick6" Width="65"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>

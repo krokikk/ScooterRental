@@ -23,6 +23,18 @@ namespace ScooterRental
         public MainWindow()
         {
             InitializeComponent();
+
+            // определяем путь к файлу ресурсов
+            var uri = new Uri("Styles/StyleDay.xaml", UriKind.Relative);
+            // загружаем словарь ресурсов
+            ResourceDictionary resourceDict = Application.LoadComponent(uri) as
+            ResourceDictionary;
+            // очищаем коллекцию ресурсов приложения
+            Application.Current.Resources.Clear();
+            // добавляем загруженный словарь ресурсов
+            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
         }
+
+
     }
 }
