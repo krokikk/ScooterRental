@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,6 +34,7 @@ namespace ScooterRental.Pages
 
         private void Reg_Click(object sender, RoutedEventArgs e)
         {
+            // проверка на заполненные поля
             if (string.IsNullOrEmpty(LoginTB.Text) || string.IsNullOrEmpty(PasswordPB.Password) || string.IsNullOrEmpty(Password2PB.Password) || string.IsNullOrEmpty(AgeDP.Text) ||
                 string.IsNullOrEmpty(FioTB.Text) || string.IsNullOrEmpty(NumberTB.Text))
             {
@@ -40,12 +42,48 @@ namespace ScooterRental.Pages
                 return;
             }
 
+            // проверка соответствия паролей
             if (PasswordPB.Password != Password2PB.Password)
             {
                 MessageBox.Show("Пароли не совпадают.");
                 return;
             }
 
+            // проверка соответствия требованиям пароля
+            if (PasswordPB.Password.Length >= 6)
+            {
+                bool en = true;
+                bool number = false;
+
+                for (int i = 0; i < PasswordPB.Password.Length; i++)
+                {
+                    if (PasswordPB.Password[i] >= '0' && PasswordPB.Password[i] <= '9') number =
+                    true;
+                    else if (!((PasswordPB.Password[i] >= 'A' && PasswordPB.Password[i] <=
+                    'Z') || (PasswordPB.Password[i] >= 'a' && PasswordPB.Password[i] <= 'z')))
+                        en = false;
+                }
+
+                if (!en)
+                {
+                    MessageBox.Show("Используйте только английскую расскладку!");
+                    return;
+                }
+
+                else if (!number)
+                {
+                    MessageBox.Show("Добавьте хотя бы одну цифру!");
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пароль слишком короткий, должно быть минимум 6 символов!");
+                return;
+            }
+
+
+            // пользователь уже есть
             if (Core.Context.User.Any(u => u.Login == LoginTB.Text))
             {
                 MessageBox.Show("Пользователь с таким логином уже существует.");
@@ -62,9 +100,14 @@ namespace ScooterRental.Pages
             {
                 FIO = FioTB.Text,
                 Login = LoginTB.Text,
-                Password = PasswordPB.Password,
+                Password = GetHash(PasswordPB.Password),
                 Age = AgeDP.DisplayDate,
                 Phone_number = NumberTB.Text,
+                RoleID = 2,
+                SubID = 1,
+                UserStatus = true,
+                IsFine = false,
+                FineSum = 0
             };
 
             Core.Context.User.Add(currentUser);
@@ -73,6 +116,17 @@ namespace ScooterRental.Pages
             NavigationService.Navigate(new MainPage(currentUser));
 
         }
+
+        public static string GetHash(String password)
+        {
+            using (var hash = SHA1.Create())
+            {
+                return
+                string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x =>
+                x.ToString("X2")));
+            }
+        }
+
 
         private void Auth_Click(object sender, RoutedEventArgs e)
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,6 +21,7 @@ namespace ScooterRental.Pages
     /// </summary>
     public partial class AuthPage : Page
     {
+        private int failedAttempts = 0;
         public AuthPage()
         {
             InitializeComponent();
@@ -41,9 +43,29 @@ namespace ScooterRental.Pages
 
             if (currentUser != null)
             {
-                NavigationService.Navigate(new MainPage(currentUser));
-            }
+                if (currentUser.Password == GetHash(PasswordPB.Password))
+                {
+                    NavigationService.Navigate(new MainPage(currentUser));
+                }
 
+                else
+                {
+                    PasswordPB.Clear();
+                    MessageBox.Show("Неверный пароль.");
+                    failedAttempts++;
+
+                    if (failedAttempts >= 3)
+                    {
+                        if (captcha.Visibility != Visibility.Visible)
+                        {
+                            CaptchaSwitch();
+                        }
+                        CaptchaChange();
+                    }
+                    return;
+                }
+
+            }
             else
             {
                 MessageBox.Show("Пользователя с таким логином нет.");
@@ -55,6 +77,108 @@ namespace ScooterRental.Pages
             NavigationService.Navigate(new RegPage());
         }
 
-        
+        public void CaptchaSwitch()
+        {
+            switch (captcha.Visibility)
+            {
+                case Visibility.Visible:
+                    LoginTB.Clear();
+                    PasswordPB.Clear();
+
+                    captcha.Visibility = Visibility.Collapsed;
+                    captchaInput.Visibility = Visibility.Collapsed;
+                    labelCaptcha.Visibility = Visibility.Collapsed;
+                    submitCaptcha.Visibility = Visibility.Collapsed;
+                    BorderCapcha.Visibility = Visibility.Collapsed;
+
+                    LoginText.Visibility = Visibility.Visible;
+                    LoginTB.Visibility = Visibility.Visible;
+                    PasswordText.Visibility = Visibility.Visible;
+                    PasswordPB.Visibility = Visibility.Visible;
+                    BorderAuth.Visibility = Visibility.Visible;
+
+                    AuthBt.Visibility = Visibility.Visible;
+                    RegBt.Visibility = Visibility.Visible;
+                    RegText.Visibility = Visibility.Visible;
+                    return;
+
+                case Visibility.Collapsed:
+
+                    captcha.Visibility = Visibility.Visible;
+                    captchaInput.Visibility = Visibility.Visible;
+                    labelCaptcha.Visibility = Visibility.Visible;
+                    submitCaptcha.Visibility = Visibility.Visible;
+                    BorderCapcha.Visibility = Visibility.Visible;
+
+
+                    LoginText.Visibility = Visibility.Collapsed;
+                    LoginTB.Visibility = Visibility.Collapsed;
+                    PasswordText.Visibility = Visibility.Collapsed;
+                    PasswordPB.Visibility = Visibility.Collapsed;
+                    BorderAuth.Visibility = Visibility.Collapsed;
+
+
+                    AuthBt.Visibility = Visibility.Collapsed;
+                    RegBt.Visibility = Visibility.Collapsed;
+                    RegText.Visibility = Visibility.Collapsed;
+                    return;
+            }
+        }
+
+        public void CaptchaChange()
+        {
+            String allowchar = " ";
+            allowchar = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
+            allowchar += "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z";
+            allowchar += "1,2,3,4,5,6,7,8,9,0";
+            char[] a = { ',' };
+            String[] ar = allowchar.Split(a);
+            String pwd = "";
+            string temp = "";
+            Random r = new Random();
+
+            for (int i = 0; i < 6; i++)
+            {
+                temp = ar[(r.Next(0, ar.Length))];
+                pwd += temp;
+            }
+            captcha.Text = pwd;
+        }
+
+        private void submitCaptcha_Click(object sender, RoutedEventArgs e)
+        {
+            if (captchaInput.Text != captcha.Text)
+            {
+                MessageBox.Show("Неверно введена капча", "Ошибка");
+                captchaInput.Clear();
+                CaptchaChange();
+
+            }
+            else
+            {
+                MessageBox.Show("Капча введена успешно", "Успех");
+                CaptchaSwitch();
+                failedAttempts = 0;
+            }
+        }
+
+        private void textBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Copy ||
+            e.Command == ApplicationCommands.Cut ||
+            e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
+            }
+        }
+        public static string GetHash(String password)
+        {
+            using (var hash = SHA1.Create())
+            {
+                return
+                string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x =>
+                x.ToString("X2")));
+            }
+        }
     }
 }

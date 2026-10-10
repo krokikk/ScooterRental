@@ -16,20 +16,29 @@
         </Grid.RowDefinitions>
         <StackPanel>
             <TextBlock Grid.Row="0" Text="АВТОРИЗАЦИЯ" Margin="20" Style="{DynamicResource TextOutBorder}"/>
-            <Border Width="300" Style="{DynamicResource StackBorder}" Grid.Row="1">
+            <Border x:Name="BorderAuth" Width="300" Style="{DynamicResource StackBorder}" Grid.Row="1" Visibility="Visible">
                 <StackPanel>
-                    <TextBlock Text="Введите логин: "/>
-                    <TextBox x:Name="LoginTB"/>
-                    <TextBlock Text="Введите пароль: "/>
-                    <PasswordBox x:Name="PasswordPB"/>
-
-                    <Button Content="Войти" Click="Enter_Click" Margin="3,20,3,5" />
+                    <TextBlock x:Name="LoginText" Text="Введите логин: " Visibility="Visible"/>
+                    <TextBox x:Name="LoginTB" Visibility="Visible"/>
+                    <TextBlock x:Name="PasswordText" Text="Введите пароль: " Visibility="Visible"/>
+                    <PasswordBox x:Name="PasswordPB" Visibility="Visible"/>
+                    <Button x:Name="AuthBt" Content="Войти" Click="Enter_Click" Margin="3,20,3,5" Visibility="Visible"/>
                 </StackPanel>
             </Border>
             <StackPanel>
-                <TextBlock Text="Ещё нет аккаунта?" Style="{DynamicResource TextOutBorder}" Margin="0,247.5,0,0"/>
-                <Button Content="Зарегистрироваться" Click="Reg_Click" Width="200"/>
+                <TextBlock x:Name="RegText" Text="Ещё нет аккаунта?" Style="{DynamicResource TextOutBorder}" Margin="0,247.5,0,0" Visibility="Visible"/>
+                <Button x:Name="RegBt" Content="Зарегистрироваться" Click="Reg_Click" Width="200" Visibility="Visible"/>
             </StackPanel>
+            <Border Width="300" Style="{DynamicResource StackBorder}" Grid.Row="1" x:Name="BorderCapcha" Visibility="Collapsed">
+                <StackPanel>
+                    <Label Content="Введите капчу:" Name="labelCaptcha" HorizontalAlignment="Left" Visibility="Collapsed" />
+                    <TextBox CommandManager.PreviewExecuted="textBox_PreviewExecuted" ContextMenu="{x:Null}"
+                        Visibility="Collapsed" x:Name="captcha" Height="42" FontStyle="Italic" VerticalAlignment="Top" Width="156" HorizontalAlignment="Center"
+                         FontStretch="UltraCondensed" IsReadOnly="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" />
+                    <TextBox Visibility="Collapsed" x:Name="captchaInput" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
+                    <Button x:Name="submitCaptcha" Visibility="Collapsed" Height="34" Content="Подтвердить" ToolTip="Подтвердить ввод" Grid.Row="1" HorizontalAlignment="Center" Width="120" VerticalAlignment="Top" Click="submitCaptcha_Click" />
+                </StackPanel>
+            </Border>
         </StackPanel>
     </Grid>
 </Page>
