@@ -5,10 +5,45 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ScooterRental.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Страница сотрудника">
+      d:DesignHeight="550" d:DesignWidth="900"
+      Title="Страница сотрудника"
+      Style="{DynamicResource dark}">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+        <Border x:Name="BorderAuth" Width="300" Style="{DynamicResource StackBorder}" Grid.Row="1" Background="#f59c6a" Margin="10">
+            <StackPanel Grid.Column="0">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="⮜" Margin="10" FontSize="18" Padding="0" Height="35" Width="35" Click="BackButton_Click"/>
+                    <TextBlock Text="Профиль" Margin="10" Style="{DynamicResource TextOutBorder2}"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Логин: " Style="{DynamicResource Text}"/>
+                        <TextBlock Text="{Binding Login}" x:Name="LoginTB" Style="{DynamicResource Text}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Имя: " Style="{DynamicResource Text}"/>
+                        <TextBlock Text="{Binding FIO}" Style="{DynamicResource Text}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Телефон: " Style="{DynamicResource Text}"/>
+                        <TextBlock Text="{Binding Phone_number}" Style="{DynamicResource Text}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Роль: " Style="{DynamicResource Text}"/>
+                        <TextBlock Text="{Binding Roles.Name}" Style="{DynamicResource Text}"/>
+                    </StackPanel>
+
+                    <Button  Content="Выйти из аккаунта" Margin="0,270,0,0" Click="LeaveButton_Click" Width="200"/>
+
+
+                </StackPanel>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>

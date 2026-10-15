@@ -5,29 +5,28 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ScooterRental.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="590" d:DesignWidth="900"
       Style="{DynamicResource dark}"
       Title="Главная страница">
 
-    <Grid>
-        <StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Button Content="Сменить тему" ToolTip="Смена темы приложения" Click="ChangeTheme_Click" Margin="10"/>
-                <ComboBox x:Name="ChooseCB" Margin="10" SelectionChanged="ChooseCB_SelectionChanged"/>
-                <Button Content="Профиль" Click="ProfileClick" Margin="550,0,0,0"/>
-            </StackPanel>
-
-            <Grid>
-                <Image Source="/Images/map.png"/>
-                <StackPanel>
-                    <Button x:Name="Scooter1" Content="Выбрать" Click="ChooseClick1" Width="64"/>
-                    <Button x:Name="Bike1" Content="Выбрать" Click="ChooseClick2" Width="65"/>
-                    <Button x:Name="Scooter2" Content="Выбрать" Click="ChooseClick3" Width="65"/>
-                    <Button x:Name="Scooter3" Content="Выбрать" Click="ChooseClick4" Width="64"/>
-                    <Button x:Name="Bike2" Content="Выбрать" Click="ChooseClick5" Width="65"/>
-                    <Button x:Name="Scooter4" Content="Выбрать" Click="ChooseClick6" Width="65"/>
-                </StackPanel>
-            </Grid>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Сменить тему" ToolTip="Смена темы приложения" Click="ChangeTheme_Click" Margin="10" />
+            <ComboBox x:Name="ChooseCB" Margin="10" SelectionChanged="ChooseCB_SelectionChanged" DisplayMemberPath="Type_name" Width="150" ToolTip="Выбор типа транспорта"/>
+            <Button Content="Профиль" Click="ProfileClick" Margin="545,0,0,0" ToolTip="Перейти в профиль"/>
         </StackPanel>
-    </Grid>
+        <Canvas>
+            <Image Source="/Images/map.png" Height="506" Width="864" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Left="12" Canvas.Top="4"/>
+            <Button x:Name="Scooter1" Click="ChooseClick1"  Style="{DynamicResource SchooterBtn}" Canvas.Left="643" Canvas.Top="62" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Button  x:Name="Bike1" Click="ChooseClick2" Style="{DynamicResource BikeBtn}" Canvas.Left="710" Canvas.Top="393" />
+            <Button x:Name="Scooter2" Click="ChooseClick3" Style="{DynamicResource SchooterBtn}" Canvas.Left="117" Canvas.Top="149" />
+            <Button x:Name="Scooter3" Click="ChooseClick4" Style="{DynamicResource SchooterBtn}" Canvas.Left="668" Canvas.Top="52"/>
+            <Button x:Name="Bike2" Click="ChooseClick5" Style="{DynamicResource BikeBtn}" Canvas.Left="87" Canvas.Top="159"  />
+            <Button x:Name="Scooter4" Click="ChooseClick6" Style="{DynamicResource SchooterBtn}" Canvas.Left="643" Canvas.Top="455"/>
+            <Button x:Name="Scooter5" Click="ChooseClick7" Style="{DynamicResource SchooterBtn}" Canvas.Left="702" Canvas.Top="418" />
+            <Button x:Name="Scooter6" Click="ChooseClick8" Style="{DynamicResource SchooterBtn}" Canvas.Left="321" Canvas.Top="74" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button x:Name="Bike3" Click="ChooseClick9" Style="{DynamicResource BikeBtn}" Canvas.Left="341" Canvas.Top="49" RenderTransformOrigin="0.28,-0.04" />
+            <Button x:Name="Bike4" Click="ChooseClick10" Style="{DynamicResource BikeBtn}" Canvas.Left="183" Canvas.Top="340" RenderTransformOrigin="0.94,-0.84" />
+        </Canvas>
+    </StackPanel>
 </Page>

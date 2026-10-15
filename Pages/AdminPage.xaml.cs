@@ -20,9 +20,14 @@ namespace ScooterRental.Pages
     /// </summary>
     public partial class AdminPage : Page
     {
-        public AdminPage()
+        public AdminPage(User user)
         {
             InitializeComponent();
+        }
+
+        private void LeaveButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -20,9 +20,29 @@ namespace ScooterRental.Pages
     /// </summary>
     public partial class WorkerPage : Page
     {
-        public WorkerPage()
+        private User currentUser;
+        public WorkerPage(User user)
         {
             InitializeComponent();
+            currentUser = user;
+            LoadUser();
+
+        }
+
+        private void LoadUser()
+        {
+            var user = Core.Context.User.FirstOrDefault(u => u.Login == currentUser.Login);
+            DataContext = user;
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void LeaveButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

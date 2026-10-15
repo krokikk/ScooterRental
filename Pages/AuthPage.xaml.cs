@@ -25,10 +25,6 @@ namespace ScooterRental.Pages
         public AuthPage()
         {
             InitializeComponent();
-            /*var uri = new Uri("Styles/StyleDay.xaml", UriKind.Relative);
-            ResourceDictionary dict = Application.LoadComponent(uri) as ResourceDictionary;
-            Application.Current.Resources.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(dict);*/
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
@@ -47,11 +43,11 @@ namespace ScooterRental.Pages
                 {
                     if (currentUser.RoleID == 1)
                     {
-                        NavigationService.Navigate(new AdminPage());
+                        NavigationService.Navigate(new AdminPage(currentUser));
                     }
                     else if(currentUser.RoleID == 3)
                     {
-                        NavigationService.Navigate(new WorkerPage());
+                        NavigationService.Navigate(new MainPage(currentUser));
                     }
                     else
                     {
@@ -81,6 +77,13 @@ namespace ScooterRental.Pages
             {
                 MessageBox.Show("Пользователя с таким логином нет.");
             }
+
+            if (currentUser.UserStatus == false)
+            {
+                Window window = new BlockWindow();
+                window.Show();
+
+            }
         }
 
         private void Reg_Click(object sender, RoutedEventArgs e)
@@ -98,7 +101,7 @@ namespace ScooterRental.Pages
 
                     captcha.Visibility = Visibility.Collapsed;
                     captchaInput.Visibility = Visibility.Collapsed;
-                    labelCaptcha.Visibility = Visibility.Collapsed;
+                    Captcha.Visibility = Visibility.Collapsed;
                     submitCaptcha.Visibility = Visibility.Collapsed;
                     BorderCapcha.Visibility = Visibility.Collapsed;
 
@@ -117,7 +120,7 @@ namespace ScooterRental.Pages
 
                     captcha.Visibility = Visibility.Visible;
                     captchaInput.Visibility = Visibility.Visible;
-                    labelCaptcha.Visibility = Visibility.Visible;
+                    Captcha.Visibility = Visibility.Visible;
                     submitCaptcha.Visibility = Visibility.Visible;
                     BorderCapcha.Visibility = Visibility.Visible;
 

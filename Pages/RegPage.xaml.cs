@@ -24,11 +24,6 @@ namespace ScooterRental.Pages
         public RegPage()
         {
             InitializeComponent();
-
-           /* var uri = new Uri("Styles/StyleNight.xaml", UriKind.Relative );
-            ResourceDictionary dict = Application.LoadComponent(uri) as ResourceDictionary;
-            Application.Current.Resources.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(dict);*/
         }
 
 
@@ -128,7 +123,7 @@ namespace ScooterRental.Pages
             }
         }
 
-        // переход на сраницу авторизации
+        // переход на страницу авторизации
         private void Auth_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AuthPage());

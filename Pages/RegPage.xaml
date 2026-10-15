@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ScooterRental.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="590" d:DesignWidth="900"
       Style="{DynamicResource dark}"
       Title="Страница регистрации">
 
@@ -16,29 +16,29 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <Button x:Name="ChangeStyle" Click="ChangeTheme_Click" Content="Сменить тему" Margin="10" ToolTip="Смена темы приложения"/>
-            <TextBlock Text="РЕГИСТРАЦИЯ" Grid.Row="0" Margin="280,20,20,20" Style="{DynamicResource TextOutBorder}" />
+            <TextBlock Text="РЕГИСТРАЦИЯ" Grid.Row="0" Margin="280,20,20,20" Style="{DynamicResource TextOutBorder}"/>
         </StackPanel>
         <StackPanel Grid.Row="1">
             <Border Width="300" Style="{DynamicResource StackBorder}">
                 <StackPanel>
-                    <TextBlock Text="Введите ФИО: "/>
+                    <TextBlock Text="Введите ФИО: " Style="{DynamicResource Text}"/>
                     <TextBox x:Name="FioTB" ToolTip="Поле для ФИО"/>
-                    <TextBlock Text="Введите логин: "/>
+                    <TextBlock Text="Введите логин: " Style="{DynamicResource Text}"/>
                     <TextBox x:Name="LoginTB" ToolTip="Поле для логина"/>
-                    <TextBlock Text="Введите пароль: "/>
+                    <TextBlock Text="Введите пароль: " Style="{DynamicResource Text}"/>
                     <PasswordBox x:Name="PasswordPB" ToolTip="Поле для пароля"/>
                     <TextBlock Text="Повторите пароль: "/>
                     <PasswordBox x:Name="Password2PB" ToolTip="Поле для подтверждения пароля"/>
-                    <TextBlock Text="Введите дату рождения: "/>
+                    <TextBlock Text="Введите дату рождения: " Style="{DynamicResource Text}"/>
                     <DatePicker x:Name="AgeDP"/>
-                    <TextBlock Text="Введите номер телефона: "/>
+                    <TextBlock Text="Введите номер телефона: " Style="{DynamicResource Text}"/>
                     <TextBox x:Name="NumberTB" ToolTip="Поле для телефона"/>
-                    <Button Content="Зарегистрироваться" Click="Reg_Click" Margin="3,20,3,5" Style="{DynamicResource ReverseButton}" Foreground="#f5e6d6"/>
+                    <Button Content="Зарегистрироваться" Click="Reg_Click" Margin="3,20,3,5" Style="{DynamicResource ReverseButton}" Foreground="#f5e6d6" ToolTip="Подтвердить регистрацию"/>
                  </StackPanel>
             </Border>
             <StackPanel>
                 <TextBlock Margin="0,40, 0, 0" Text="Уже есть аккаунт?" Style="{DynamicResource TextOutBorder}"/>
-                    <Button Content="Войти" Click="Auth_Click" Width="200" />
+                <Button Content="Войти" Click="Auth_Click" Width="200" ToolTip="Перейти на страницу авторизации" />
                 </StackPanel>
             </StackPanel>
       </Grid>

@@ -52,7 +52,7 @@
         <Setter Property="Foreground" Value="#142841"/>
     </Style>
 
-    <Style TargetType="TextBlock">
+    <Style TargetType="TextBlock" x:Key="Text">
         <Setter Property="Margin" Value="3"/>
         <Setter Property="Foreground" Value="#142841"/>
         <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -63,4 +63,41 @@
         <Setter Property="Background" Value="#e5ded2"/>
         <Setter Property="Foreground" Value="#142841"/>
     </Style>
+
+    <Style TargetType="Button" x:Key="SchooterBtn">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush
+                ImageSource="/Images/scooter.png"
+                Stretch="Fill"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Width" Value="20"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="BikeBtn">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush
+                ImageSource="/Images/bike.png"
+                Stretch="Fill"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="25"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="Captcha">
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="Background" Value="#e5ded2"/>
+        <Setter Property="Foreground" Value="#142841"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontStretch" Value="UltraCondensed"/>
+    </Style>
+
 </ResourceDictionary>

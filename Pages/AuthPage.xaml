@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ScooterRental.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="590" d:DesignWidth="900"
       Title="Страница авторизации"
       Style="{DynamicResource dark}">
 
@@ -21,23 +21,22 @@
             </StackPanel>
             <Border x:Name="BorderAuth" Width="300" Style="{DynamicResource StackBorder}" Grid.Row="1" Visibility="Visible">
                 <StackPanel>
-                    <TextBlock x:Name="LoginText" Text="Введите логин: " Visibility="Visible"/>
+                    <TextBlock x:Name="LoginText" Text="Введите логин: " Visibility="Visible" Style="{DynamicResource Text}"/>
                     <TextBox x:Name="LoginTB" Visibility="Visible" ToolTip="Поле для логина"/>
-                    <TextBlock x:Name="PasswordText" Text="Введите пароль: " Visibility="Visible"/>
+                    <TextBlock x:Name="PasswordText" Text="Введите пароль: " Visibility="Visible" Style="{DynamicResource Text}"/>
                     <PasswordBox x:Name="PasswordPB" Visibility="Visible" ToolTip="Поле для пароля"/>
-                    <Button x:Name="AuthBt" Content="Войти" Click="Enter_Click" Margin="3,20,3,5" Visibility="Visible" Style="{DynamicResource ReverseButton}"/>
+                    <Button x:Name="AuthBt" Content="Войти" Click="Enter_Click" Margin="3,20,3,5" Visibility="Visible" Style="{DynamicResource ReverseButton}" ToolTip="Вход в приложение"/>
                 </StackPanel>
             </Border>
             <StackPanel>
-                <TextBlock x:Name="RegText" Text="Ещё нет аккаунта?" Style="{DynamicResource TextOutBorder}" Margin="0,247.5,0,0" Visibility="Visible"/>
-                <Button x:Name="RegBt" Content="Зарегистрироваться" Click="Reg_Click" Width="200" Visibility="Visible"/>
+                <TextBlock x:Name="RegText" Text="Ещё нет аккаунта?" Style="{DynamicResource TextOutBorder}" Margin="0,241,0,0" Visibility="Visible"/>
+                <Button x:Name="RegBt" Content="Зарегистрироваться" Click="Reg_Click" Width="200" Visibility="Visible" ToolTip="Перейти на страницу регистрации"/>
             </StackPanel>
             <Border Width="300" Style="{DynamicResource StackBorder}" Grid.Row="1" x:Name="BorderCapcha" Visibility="Collapsed">
                 <StackPanel>
-                    <Label Content="Введите капчу:" Name="labelCaptcha" HorizontalAlignment="Left" Visibility="Collapsed" />
-                    <TextBox CommandManager.PreviewExecuted="textBox_PreviewExecuted" ContextMenu="{x:Null}"
-                        Visibility="Collapsed" x:Name="captcha" Height="42" FontStyle="Italic" VerticalAlignment="Top" Width="156" HorizontalAlignment="Center"
-                         FontStretch="UltraCondensed" IsReadOnly="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" />
+                    <TextBlock Text="Введите капчу:" Name="Captcha" HorizontalAlignment="Left" Visibility="Collapsed" Style="{DynamicResource Text}"/>
+                    <TextBox CommandManager.PreviewExecuted="textBox_PreviewExecuted" Visibility="Collapsed" x:Name="captcha" Height="42" VerticalAlignment="Top" Width="156" 
+                             HorizontalAlignment="Center" IsReadOnly="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource Captcha}"/>
                     <TextBox Visibility="Collapsed" x:Name="captchaInput" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
                     <Button x:Name="submitCaptcha" Visibility="Collapsed" Height="34" Content="Подтвердить" ToolTip="Подтвердить ввод" Grid.Row="1" 
                             HorizontalAlignment="Center" Width="120" VerticalAlignment="Top" Click="submitCaptcha_Click" Style="{DynamicResource ReverseButton}"/>

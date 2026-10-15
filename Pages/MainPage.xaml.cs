@@ -20,18 +20,33 @@ namespace ScooterRental.Pages
     /// </summary>
     public partial class MainPage : Page
     {
-        private User currentUser; 
+        private User currentUser;
+
         public MainPage(User user)
         {
             InitializeComponent();
             currentUser = user;
 
+            ChooseCB.ItemsSource = Core.Context.Vechicles_Types.ToList();
+
+            
         }
 
         // переход на страницу профиля
         private void ProfileClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ProfilePage(currentUser));
+            if (currentUser.RoleID == 1)
+            {
+                NavigationService.Navigate(new AdminPage(currentUser));
+            }
+            else if (currentUser.RoleID == 3)
+            {
+                NavigationService.Navigate(new WorkerPage(currentUser));
+            }
+            else
+            {
+                NavigationService.Navigate(new ProfilePage(currentUser));
+            }
         }
 
         // переключение темы
@@ -112,27 +127,76 @@ namespace ScooterRental.Pages
             window.Show();
         }
 
+        private void ChooseClick7(object sender, RoutedEventArgs e)
+        {
+            var scooter2 = Core.Context.Vechicles.FirstOrDefault(u => u.ID == 8);
+            RentWindow window = new RentWindow(scooter2);
+            window.Show();
+        }
+
+        private void ChooseClick8(object sender, RoutedEventArgs e)
+        {
+            var scooter3 = Core.Context.Vechicles.FirstOrDefault(u => u.ID == 9);
+            RentWindow window = new RentWindow(scooter3);
+            window.Show();
+        }
+        private void ChooseClick9(object sender, RoutedEventArgs e)
+        {
+            var bike2 = Core.Context.Vechicles.FirstOrDefault(u => u.ID == 7);
+            RentWindow window = new RentWindow(bike2);
+            window.Show();
+        }
+        private void ChooseClick10(object sender, RoutedEventArgs e)
+        {
+            var scooter4 = Core.Context.Vechicles.FirstOrDefault(u => u.ID == 10);
+            RentWindow window = new RentWindow(scooter4);
+            window.Show();
+        }
+
         // выбор типа транспорта
         private void ChooseCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(Core.Context.Vechicles_Models.Any(u => u.Model_name == "Электросамокат"))
+            if (ChooseCB.SelectedItem == null)
+                return;
+
+            var selectedModel = ChooseCB.SelectedItem as Vechicles_Types;
+
+            if (selectedModel == null)
+                return;
+
+            if (selectedModel.Type_name == "Электросамокат")
             {
                 Scooter1.Visibility = Visibility.Visible;
                 Scooter2.Visibility = Visibility.Visible;
                 Scooter3.Visibility = Visibility.Visible;
                 Scooter4.Visibility = Visibility.Visible;
-                Bike1.Visibility = Visibility.Hidden;
-                Bike2.Visibility = Visibility.Hidden;
+                Scooter5.Visibility = Visibility.Visible;
+                Scooter6.Visibility = Visibility.Visible;
+
+                Bike1.Visibility = Visibility.Collapsed;
+                Bike2.Visibility = Visibility.Collapsed;
+                Bike3.Visibility = Visibility.Collapsed;
+                Bike4.Visibility = Visibility.Collapsed;
             }
-            if (Core.Context.Vechicles_Models.Any(u => u.Model_name == "Электровелосипед"))
+            else if (selectedModel.Type_name == "Электровелосипед")
             {
-                Scooter1.Visibility = Visibility.Hidden;
-                Scooter2.Visibility = Visibility.Hidden;
-                Scooter3.Visibility = Visibility.Hidden;
-                Scooter4.Visibility = Visibility.Hidden;
+                Scooter1.Visibility = Visibility.Collapsed;
+                Scooter2.Visibility = Visibility.Collapsed;
+                Scooter3.Visibility = Visibility.Collapsed;
+                Scooter4.Visibility = Visibility.Collapsed;
+                Scooter5.Visibility = Visibility.Collapsed;
+                Scooter6.Visibility = Visibility.Collapsed;
+
                 Bike1.Visibility = Visibility.Visible;
-                Bike2.Visibility = Visibility.Hidden;
+                Bike2.Visibility = Visibility.Visible;
+                Bike3.Visibility = Visibility.Visible;
+                Bike4.Visibility = Visibility.Visible;
             }
+        }
+
+        private void ChooseBt_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

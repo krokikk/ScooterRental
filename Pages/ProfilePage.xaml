@@ -5,10 +5,67 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ScooterRental.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Профиль">
+      d:DesignHeight="590" d:DesignWidth="900"
+      Title="Профиль"
+      Style="{DynamicResource dark}">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+        <Border x:Name="BorderAuth" Width="300" Style="{DynamicResource StackBorder}" Grid.Row="1" Background="#f59c6a" Margin="10">
+            <StackPanel Grid.Column="0">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="⮜" Margin="10" FontSize="18" Padding="0" Height="35" Width="35" Click="BackButton_Click"/>
+                    <TextBlock Text="Профиль" Margin="10" Style="{DynamicResource TextOutBorder2}"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Логин: " Style="{DynamicResource Text}"/>
+                        <TextBlock Text="{Binding Login}" x:Name="LoginTB" Style="{DynamicResource Text}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Имя: " Style="{DynamicResource Text}"/>
+                        <TextBlock Text="{Binding FIO}" Style="{DynamicResource Text}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Телефон: " Style="{DynamicResource Text}"/>
+                        <TextBlock Text="{Binding Phone_number}" Style="{DynamicResource Text}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Роль: " Style="{DynamicResource Text}"/>
+                        <TextBlock Text="{Binding Roles.Name}" Style="{DynamicResource Text}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Подписка: " Style="{DynamicResource Text}"/>
+                        <TextBlock Text="{Binding Subscription.Name}" Style="{DynamicResource Text}"/>
+                    </StackPanel>
+                    <Button Content="Оформить подписку" Click="ButtonSub_Click" Width="200"/>
+                    <Button Content="Проверить наличие штрафов " Click="ButtonFine_Click" Width="200"/>
+                    <Button  Content="Выйти из аккаунта" Margin="0,200,0,0" Click="ButtonLeave_Click" Width="200"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Border Style="{DynamicResource StackBorder}" Margin="10" Grid.Column="1">
+            <StackPanel>
+                <TextBlock Text="История поездок" Style="{DynamicResource TextOutBorder2}" Margin="10"/>
+                <Border Style="{DynamicResource Border2}" Margin="7">
+                    <ListBox Grid.Column="1" x:Name="TripsLB" d:ItemsSource="{d:SampleData ItemCount=5}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Vechicles.Vechicles_Types.Type_name, StringFormat= Тип транспорта: {0}}"/>
+                                <TextBlock Text="{Binding Start_time, StringFormat=Начало поездки: {0:HH:mm}}"/>
+                                <TextBlock Text="{Binding End_time, StringFormat= Окончание поездки: {0:HH:mm}}"/>
+                                <TextBlock Text="{Binding Sum, StringFormat= Стоимость: {0}}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                </Border>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>
