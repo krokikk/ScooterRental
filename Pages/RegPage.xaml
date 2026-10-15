@@ -32,7 +32,7 @@
                     <TextBlock Text="Введите дату рождения: " Style="{DynamicResource Text}"/>
                     <DatePicker x:Name="AgeDP"/>
                     <TextBlock Text="Введите номер телефона: " Style="{DynamicResource Text}"/>
-                    <TextBox x:Name="NumberTB" ToolTip="Поле для телефона"/>
+                    <TextBox x:Name="NumberTB" ToolTip="Поле для телефона" TextChanged="PhoneText" MaxLength="12"/>
                     <Button Content="Зарегистрироваться" Click="Reg_Click" Margin="3,20,3,5" Style="{DynamicResource ReverseButton}" Foreground="#f5e6d6" ToolTip="Подтвердить регистрацию"/>
                  </StackPanel>
             </Border>

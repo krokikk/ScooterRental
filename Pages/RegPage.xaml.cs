@@ -165,6 +165,16 @@ namespace ScooterRental.Pages
                 }
             }
         }
+        private void PhoneText(object sender, TextChangedEventArgs e)
+        {
+            string digits = new string(
+                NumberTB.Text.Where(c => char.IsDigit(c) || c == '+').ToArray());
+
+            if (NumberTB.Text != digits)
+            {
+                NumberTB.Text = digits;
+            }
+        }
 
     }
 }

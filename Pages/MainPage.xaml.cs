@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -192,11 +193,6 @@ namespace ScooterRental.Pages
                 Bike3.Visibility = Visibility.Visible;
                 Bike4.Visibility = Visibility.Visible;
             }
-        }
-
-        private void ChooseBt_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
