@@ -42,7 +42,12 @@ namespace ScooterRental.Pages
 
         private void LeaveButton_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show("Вы действительно хотите выйти?", "Подтверждение выхода", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
+            if (result == MessageBoxResult.Yes)
+            {
+                NavigationService.Navigate(new RegPage());
+            }
         }
     }
 }

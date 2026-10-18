@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScooterRental"
         mc:Ignorable="d"
-        Height="590" Width="900">
+        Height="590" Width="900"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing">
     <Grid>
         <Frame Source="Pages/RegPage.xaml" NavigationUIVisibility="Hidden"/>
         

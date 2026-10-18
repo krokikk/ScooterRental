@@ -51,7 +51,13 @@ namespace ScooterRental.Pages
 
         private void ButtonLeave_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RegPage());
+            MessageBoxResult result = MessageBox.Show( "Вы действительно хотите выйти?", "Подтверждение выхода", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+               NavigationService.Navigate(new RegPage());
+            }
+            
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

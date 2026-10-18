@@ -37,8 +37,8 @@
                         <TextBlock Text="Роль: " Style="{DynamicResource Text}"/>
                         <TextBlock Text="{Binding Roles.Name}" Style="{DynamicResource Text}"/>
                     </StackPanel>
-
-                    <Button  Content="Выйти из аккаунта" Margin="0,310,0,0" Click="LeaveButton_Click" Width="200"/>
+                    <Button Content="Отчёты" Width="200" Margin="0,250,0,0" Click="Button_Click_1"/>
+                    <Button  Content="Выйти из аккаунта" Click="LeaveButton_Click" Width="200"/>
 
 
                 </StackPanel>
@@ -46,8 +46,38 @@
         </Border>
         <Border Grid.Column="1" Margin="0,10,10,10" Style="{DynamicResource StackBorder}">
             <TabControl x:Name="Tab" Margin="5">
-                <TabItem Header="Пользователи" IsSelected="True"/>
-                <TabItem Header="Отзывы" IsSelected="False"/>
+                <TabItem Header="Пользователи" IsSelected="True">
+                    <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" x:Name="LBUser">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding FIO, StringFormat= ФИО: {0}}"/>
+                                    <TextBlock Text="{Binding Login, StringFormat=Логин: {0}}"/>
+                                    <TextBlock Text="{Binding UserStatus, StringFormat=Статус: {0}}"/>
+                                    <Button Content="Редактировать" Click="Button_Click" Height="20" Width="100"/>
+                                </StackPanel>
+                               
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
+
+                <TabItem Header="Отзывы" IsSelected="False">
+                    <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" x:Name="LBReview">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding User.Login, StringFormat=Пользователь: {0}}"/>
+                                    <TextBlock Text="{Binding VechiclesID, StringFormat=Транспорт: {0}}"/>
+                                    <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding Rate, StringFormat=Оценка: {0}}"/>
+                                    <Button Content="Ответить" Height="20" Width="100"/>
+                                </StackPanel>
+                                
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
             </TabControl>
         </Border>
     </Grid>
