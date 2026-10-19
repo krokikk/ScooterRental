@@ -5,6 +5,10 @@
         <Setter Property="Background" Value="#273751"/>
     </Style>
 
+    <Style TargetType="Window" x:Key="win">
+        <Setter Property="Background" Value="#273751"/>
+    </Style>
+
     <Style TargetType="Border" x:Key="StackBorder">
         <Setter Property="BorderBrush" Value="#142841"/>
         <Setter Property="Background" Value="#798da6"/>
@@ -13,12 +17,11 @@
         <Setter Property="CornerRadius" Value="8"/>
     </Style>
 
-    <Style TargetType="Button">
-        <Setter Property="Margin" Value="3"/>
-        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+    <Style TargetType="Border" x:Key="Border2">
         <Setter Property="Background" Value="#e5ded2"/>
-        <Setter Property="Foreground" Value="#142841"/>
-        <Setter Property="Height" Value="27"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="CornerRadius" Value="8"/>
     </Style>
 
     <Style TargetType="Button" x:Key="ReverseButton">
@@ -26,10 +29,28 @@
         <Setter Property="FontFamily" Value="Comic Sans MS"/>
         <Setter Property="Background" Value="#273751"/>
         <Setter Property="Foreground" Value="#e5ded2"/>
+        <Setter Property="BorderBrush" Value="#142841"/>
         <Setter Property="Height" Value="27"/>
     </Style>
-    
+
+    <Style TargetType="Button">
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="Background" Value="#e5ded2"/>
+        <Setter Property="Foreground" Value="#142841"/>
+        <Setter Property="BorderBrush" Value="#142841"/>
+        <Setter Property="Height" Value="27"/>
+    </Style>
+
     <Style TargetType="TextBox">
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="Background" Value="#e5ded2"/>
+        <Setter Property="Foreground" Value="#142841"/>
+    </Style>
+
+    <Style TargetType="PasswordBox">
         <Setter Property="Height" Value="20"/>
         <Setter Property="Margin" Value="3"/>
         <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -42,14 +63,15 @@
         <Setter Property="FontFamily" Value="Comic Sans MS"/>
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
-    <Style TargetType="PasswordBox">
-        <Setter Property="Height" Value="20"/>
-        <Setter Property="Margin" Value="3"/>
-        <Setter Property="FontFamily" Value="Comic Sans MS"/>
-        <Setter Property="Background" Value="#e5ded2"/>
+    <Style TargetType="TextBlock" x:Key="TextOutBorder2">
         <Setter Property="Foreground" Value="#142841"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="FontSize" Value="26"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
     <Style TargetType="TextBlock" x:Key="Text">
@@ -67,9 +89,8 @@
     <Style TargetType="Button" x:Key="SchooterBtn">
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush
-                ImageSource="/Images/scooter.png"
-                Stretch="Fill"/>
+                <ImageBrush ImageSource="/Images/scooter.png"
+                            Stretch="Fill"/>
             </Setter.Value>
         </Setter>
         <Setter Property="BorderThickness" Value="0"/>
@@ -80,14 +101,26 @@
     <Style TargetType="Button" x:Key="BikeBtn">
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush
-                ImageSource="/Images/bike.png"
-                Stretch="Fill"/>
+                <ImageBrush ImageSource="/Images/bike.png"
+                            Stretch="Fill"/>
             </Setter.Value>
         </Setter>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Height" Value="25"/>
         <Setter Property="Width" Value="25"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="BinBtn">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Images/bin.png"
+                            Stretch="Fill"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="#142841"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Width" Value="20"/>
     </Style>
 
     <Style TargetType="TextBox" x:Key="Captcha">
@@ -100,5 +133,34 @@
         <Setter Property="FontStretch" Value="UltraCondensed"/>
     </Style>
 
+    <Style TargetType="TabControl">
+        <Setter Property="BorderBrush" Value="#142841"/>
+        <Setter Property="Background" Value="#798da6"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="3"/>
+    </Style>
+
+    <Style TargetType="TabItem">
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="Background" Value="#e5ded2"/>
+        <Setter Property="Foreground" Value="#142841"/>
+        <Setter Property="Height" Value="27"/>
+    </Style>
+
+    <Style TargetType="ListBox">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style TargetType="ListBoxItem">
+        <Setter Property="BorderBrush" Value="#e5ded2"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+
+    <Style TargetType="CheckBox">
+        <Setter Property="Foreground" Value="#142841"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+    </Style>
 
 </ResourceDictionary>

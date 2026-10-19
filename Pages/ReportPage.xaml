@@ -6,9 +6,16 @@
       xmlns:local="clr-namespace:ScooterRental.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ReportPage">
+      Title="ReportPage"
+      Style="{DynamicResource dark}">
 
     <Grid>
-        
+        <StackPanel VerticalAlignment="Center">
+            <Button Content="⮜" Width="40" Height="40" HorizontalAlignment="Left" Click="BackButton_Click"/>
+            <TextBlock Text="Отчёты" Style="{StaticResource TextOutBorder}" FontSize="28" HorizontalAlignment="Center"/>
+            <Button Content="Импорт в Word" Height="65" Width="300" FontSize="18" Click="WordButton_Click"/>
+            <Button Content="Импорт в Excel" Height="65" Width="300" FontSize="18" Click="ExcelButton_Click"/>
+            <Button Content="Диаграмма" Height="65" Width="300" FontSize="18" Click="ChartButton_Click"/>
+        </StackPanel>
     </Grid>
 </Page>
