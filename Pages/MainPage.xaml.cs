@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScooterRental.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,40 +52,9 @@ namespace ScooterRental.Pages
         }
 
         // переключение темы
-        private bool isDayTheme = true;
         private void ChangeTheme_Click(object sender, RoutedEventArgs e)
         {
-            string path;
-
-            if (isDayTheme == true)
-            {
-                path = "Styles/StyleNight.xaml";
-            }
-            else
-            {
-                path = "Styles/StyleDay.xaml";
-            }
-
-            var uri = new Uri(path, UriKind.Relative);
-
-            var resourceDict =
-                Application.LoadComponent(uri) as ResourceDictionary;
-
-            if (resourceDict != null)
-            {
-                Application.Current.Resources.MergedDictionaries.Clear();
-
-                Application.Current.Resources.MergedDictionaries.Add(resourceDict);
-
-                if (isDayTheme == true)
-                {
-                    isDayTheme = false;
-                }
-                else
-                {
-                    isDayTheme = true;
-                }
-            }
+            Themes.ChangeTheme();
         }
 
         // кнопки самокатов

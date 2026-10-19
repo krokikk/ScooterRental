@@ -46,15 +46,19 @@
         </Border>
         <Border Grid.Column="1" Margin="0,10,10,10" Style="{DynamicResource StackBorder}">
             <TabControl x:Name="Tab" Margin="5">
-                <TabItem Header="Пользователи" IsSelected="True">
+                <TabItem Header="Пользователи" IsSelected="True" Height="27" Margin="-2,-1,-2,0" VerticalAlignment="Top">
                     <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" x:Name="LBUser">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
                                     <TextBlock Text="{Binding FIO, StringFormat= ФИО: {0}}"/>
                                     <TextBlock Text="{Binding Login, StringFormat=Логин: {0}}"/>
+                                    <TextBlock Text="{Binding Password, StringFormat=Пароль: {0}}"/>
                                     <TextBlock Text="{Binding UserStatus, StringFormat=Статус: {0}}"/>
-                                    <Button Content="Редактировать" Click="Button_Click" Height="20" Width="100"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Редактировать" Click="Button_Click" Height="20" Width="100" HorizontalAlignment="Left"/>
+                                        <Button Style="{DynamicResource BinBtn}" Click="DeleteButton_Click"/>
+                                    </StackPanel>
                                 </StackPanel>
                                
                             </DataTemplate>
@@ -71,7 +75,7 @@
                                     <TextBlock Text="{Binding VechiclesID, StringFormat=Транспорт: {0}}"/>
                                     <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
                                     <TextBlock Text="{Binding Rate, StringFormat=Оценка: {0}}"/>
-                                    <Button Content="Ответить" Height="20" Width="100"/>
+                                    <Button Content="Ответить" Height="20" Width="100" HorizontalAlignment="Left"/>
                                 </StackPanel>
                                 
                             </DataTemplate>

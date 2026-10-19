@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ScooterRental.Classes;
+
 
 namespace ScooterRental.Pages
 {
@@ -65,5 +67,16 @@ namespace ScooterRental.Pages
             NavigationService.GoBack();
         }
 
+       
+        private void ChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+            Themes.ChangeTheme();
+        }
+
+        private void PassButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window window = new PasswordWindow(currentUser);
+            window.Show();
+        }
     }
 }

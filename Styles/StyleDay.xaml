@@ -5,6 +5,10 @@
         <Setter Property="Background" Value="#9b3f47"/>
     </Style>
 
+    <Style TargetType="Window" x:Key="win">
+        <Setter Property="Background" Value="#9b3f47"/>
+    </Style>
+
     <Style TargetType="Border" x:Key="StackBorder">
         <Setter Property="BorderBrush" Value="#7a2e18"/>
         <Setter Property="Background" Value="#e4a2a0"/>
@@ -25,6 +29,7 @@
         <Setter Property="FontFamily" Value="Comic Sans MS"/>
         <Setter Property="Background" Value="#9b3f47"/>
         <Setter Property="Foreground" Value="#f5e6d6"/>
+        <Setter Property="BorderBrush" Value="#490B1A"/>
         <Setter Property="Height" Value="27"/>
     </Style>
 
@@ -33,6 +38,7 @@
         <Setter Property="FontFamily" Value="Comic Sans MS"/>
         <Setter Property="Background" Value="#f5e6d6"/>
         <Setter Property="Foreground" Value="#6b1e2a"/>
+        <Setter Property="BorderBrush" Value="#490B1A"/>
         <Setter Property="Height" Value="27"/>
     </Style>
 
@@ -144,9 +150,7 @@
     <Style TargetType="Button" x:Key="SchooterBtn">
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush
-                ImageSource="/Images/scooter.png"
-                Stretch="Fill"/>
+                <ImageBrush ImageSource="/Images/scooter.png" Stretch="Fill"/>
             </Setter.Value>
         </Setter>
         <Setter Property="BorderThickness" Value="0"/>
@@ -157,14 +161,24 @@
     <Style TargetType="Button" x:Key="BikeBtn">
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush
-                ImageSource="/Images/bike.png"
-                Stretch="Fill"/>
+                <ImageBrush ImageSource="/Images/bike.png" Stretch="Fill"/>
             </Setter.Value>
         </Setter>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Height" Value="25"/>
         <Setter Property="Width" Value="25" />
+    </Style>
+
+    <Style TargetType="Button" x:Key="BinBtn">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Images/bin.png" Stretch="Fill"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="#490B1A"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Width" Value="20" />
     </Style>
 
     <Style TargetType="TextBox" x:Key="Captcha">
@@ -178,7 +192,7 @@
     </Style>
 
     <Style TargetType="TabControl">
-        <Setter Property="BorderBrush" Value="#7a2e18"/>
+        <Setter Property="BorderBrush" Value="#490B1A"/>
         <Setter Property="Background" Value="#e4a2a0"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="3"/>

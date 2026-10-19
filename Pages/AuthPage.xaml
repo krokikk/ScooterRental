@@ -29,6 +29,7 @@
                 </StackPanel>
             </Border>
             <StackPanel>
+               
                 <TextBlock x:Name="RegText" Text="Ещё нет аккаунта?" Style="{DynamicResource TextOutBorder}" Margin="0,241,0,0" Visibility="Visible"/>
                 <Button x:Name="RegBt" Content="Зарегистрироваться" Click="Reg_Click" Width="200" Visibility="Visible" ToolTip="Перейти на страницу регистрации"/>
             </StackPanel>

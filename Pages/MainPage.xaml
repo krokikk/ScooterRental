@@ -16,7 +16,7 @@
             <Button Content="Профиль" Click="ProfileClick" Margin="545,0,0,0" ToolTip="Перейти в профиль"/>
         </StackPanel>
         <Canvas>
-            <Image Source="/Images/map.png" Height="506" Width="864" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Left="12" Canvas.Top="4"/>
+            <Image Source="/Images/map.jpg" Height="506" Width="864" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Left="12" Canvas.Top="4"/>
             <Button x:Name="Scooter1" Click="ChooseClick1"  Style="{DynamicResource SchooterBtn}" Canvas.Left="643" Canvas.Top="62" HorizontalAlignment="Left" VerticalAlignment="Top" />
             <Button  x:Name="Bike1" Click="ChooseClick2" Style="{DynamicResource BikeBtn}" Canvas.Left="710" Canvas.Top="393" />
             <Button x:Name="Scooter2" Click="ChooseClick3" Style="{DynamicResource SchooterBtn}" Canvas.Left="117" Canvas.Top="149" />

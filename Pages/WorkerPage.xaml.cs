@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScooterRental.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,6 +49,11 @@ namespace ScooterRental.Pages
             {
                 NavigationService.Navigate(new RegPage());
             }
+        }
+
+        private void ChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+            Themes.ChangeTheme();
         }
     }
 }

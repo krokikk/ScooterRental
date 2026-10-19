@@ -19,6 +19,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Button Content="⮜" Margin="10" FontSize="18" Padding="0" Height="35" Width="35" Click="BackButton_Click"/>
                     <TextBlock Text="Профиль" Margin="10" Style="{DynamicResource TextOutBorder2}"/>
+                    <Button x:Name="ChangeStyle" Click="ChangeTheme_Click" Content="Сменить тему" Margin="10" Height="35" ToolTip="Смена темы приложения"/>
                 </StackPanel>
 
                 <StackPanel>
@@ -44,7 +45,9 @@
                     </StackPanel>
                     <Button Content="Оформить подписку" Click="ButtonSub_Click" Width="200"/>
                     <Button Content="Проверить наличие штрафов " Click="ButtonFine_Click" Width="200"/>
-                    <Button  Content="Выйти из аккаунта" Margin="0,200,0,0" Click="ButtonLeave_Click" Width="200"/>
+                    <Button Content="Сменить пароль" Width="200" Margin="0,150,0,0" Click="PassButton_Click"/>
+                    <Button  Content="Выйти из аккаунта" Click="ButtonLeave_Click" Width="200"/>
+                    
                 </StackPanel>
             </StackPanel>
         </Border>

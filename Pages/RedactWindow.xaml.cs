@@ -19,9 +19,27 @@ namespace ScooterRental.Pages
     /// </summary>
     public partial class RedactWindow : Window
     {
-        public RedactWindow()
+        private User currentUser;
+        public RedactWindow(User user)
         {
             InitializeComponent();
+            currentUser = user;
+        }
+
+        public void LoadUser()
+        {
+            var user = Core.Context.User.FirstOrDefault(u => u.ID == currentUser.ID);
+            DataContext = user;
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
