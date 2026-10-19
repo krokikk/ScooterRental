@@ -54,16 +54,17 @@ namespace ScooterRental.Pages
                 NavigationService.Navigate(new RegPage());
             }
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var btn = sender as Button;
-            var user = btn.DataContext as User;
-            User curUser = Core.Context.User.FirstOrDefault(u => u.ID == user.ID);
+            if (sender is Button button && button.DataContext is User selectedUser)
+            {
+                RedactWindow window = new RedactWindow(selectedUser);
+                window.ShowDialog();
 
-            Window window = new RedactWindow(curUser);
-            window.Show();
+                LBUser.ItemsSource = Core.Context.User.ToList();
+            }
         }
+
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {

@@ -215,6 +215,11 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="2"/>
     </Style>
+
+    <Style TargetType="CheckBox">
+        <Setter Property="Foreground" Value="#6b1e2a"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+    </Style>
 </ResourceDictionary>
     
 

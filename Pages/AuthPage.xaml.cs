@@ -38,6 +38,13 @@ namespace ScooterRental.Pages
 
             var currentUser = Core.Context.User.FirstOrDefault(u => u.Login == LoginTB.Text);
 
+            if (currentUser.UserStatus == false)
+            {
+                Window window = new BlockWindow();
+                window.Show();
+                NavigationService.Navigate(new RegPage());
+            }
+
             if (currentUser != null)
             {
                 if (currentUser.Password == GetHash(PasswordPB.Password))
@@ -77,13 +84,6 @@ namespace ScooterRental.Pages
             else
             {
                 MessageBox.Show("Пользователя с таким логином нет.");
-            }
-
-            if (currentUser.UserStatus == false)
-            {
-                Window window = new BlockWindow();
-                window.Show();
-
             }
         }
 
