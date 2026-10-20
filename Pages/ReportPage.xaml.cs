@@ -50,13 +50,11 @@ namespace ScooterRental.Pages
             title.Range.Font.Name = "Times New Roman";
             title.Range.Font.Size = 18;
             title.Range.Font.Bold = 1;
-            title.Range.ParagraphFormat.Alignment =
-                Word.WdParagraphAlignment.wdAlignParagraphCenter;
+            title.Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
             title.Range.InsertParagraphAfter();
 
             Word.Paragraph dateParagraph = document.Paragraphs.Add();
-            dateParagraph.Range.Text =
-                "Дата формирования: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm");
+            dateParagraph.Range.Text = "Дата формирования: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm");
             dateParagraph.Range.Font.Name = "Times New Roman";
             dateParagraph.Range.Font.Size = 11;
             dateParagraph.Range.InsertParagraphAfter();
@@ -64,15 +62,10 @@ namespace ScooterRental.Pages
             Word.Paragraph tableParagraph = document.Paragraphs.Add();
             Word.Range tableRange = tableParagraph.Range;
 
-            Word.Table table = document.Tables.Add(
-                tableRange,
-                allUsers.Count + 1,
-                6);
+            Word.Table table = document.Tables.Add(tableRange, allUsers.Count + 1, 6);
 
-            table.Borders.InsideLineStyle =
-                Word.WdLineStyle.wdLineStyleSingle;
-            table.Borders.OutsideLineStyle =
-                Word.WdLineStyle.wdLineStyleSingle;
+            table.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleSingle;
+            table.Borders.OutsideLineStyle = Word.WdLineStyle.wdLineStyleSingle;
 
             string[] headers = {"ID", "ФИО", "Логин", "Телефон", "Роль", "Подписка"};
 
@@ -100,20 +93,15 @@ namespace ScooterRental.Pages
 
             foreach (Word.Section section in document.Sections)
             {
-                Word.HeaderFooter header =
-                    section.Headers[Word.WdHeaderFooterIndex.wdHeaderFooterPrimary];
+                Word.HeaderFooter header = section.Headers[Word.WdHeaderFooterIndex.wdHeaderFooterPrimary];
 
-                header.Range.Text = "ScooterRental | Отчёт от " +
-                                    DateTime.Now.ToString("dd.MM.yyyy");
-                header.Range.ParagraphFormat.Alignment =
-                    Word.WdParagraphAlignment.wdAlignParagraphRight;
+                header.Range.Text = "ScooterRental | Отчёт от " + DateTime.Now.ToString("dd.MM.yyyy");
+                header.Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
                 header.Range.Font.Size = 9;
 
-                Word.HeaderFooter footer =
-                    section.Footers[Word.WdHeaderFooterIndex.wdHeaderFooterPrimary];
+                Word.HeaderFooter footer = section.Footers[Word.WdHeaderFooterIndex.wdHeaderFooterPrimary];
 
-                footer.PageNumbers.Add(
-                    Word.WdPageNumberAlignment.wdAlignPageNumberCenter);
+                footer.PageNumbers.Add(Word.WdPageNumberAlignment.wdAlignPageNumberCenter);
             }
 
             document.SaveAs2(dialog.FileName);
@@ -138,19 +126,15 @@ namespace ScooterRental.Pages
             Excel.Application application = new Excel.Application();
             Excel.Workbook workbook = null;
 
-            try
-            {
                 workbook = application.Workbooks.Add();
                 while (workbook.Worksheets.Count > 1)
                 {
-                    Excel.Worksheet sheet =
-                        (Excel.Worksheet)workbook.Worksheets[workbook.Worksheets.Count];
+                    Excel.Worksheet sheet = (Excel.Worksheet)workbook.Worksheets[workbook.Worksheets.Count];
 
                     sheet.Delete();
                 }
 
-                Excel.Worksheet usersSheet =
-                    (Excel.Worksheet)workbook.Worksheets[1];
+                Excel.Worksheet usersSheet = (Excel.Worksheet)workbook.Worksheets[1];
 
                 usersSheet.Name = "Пользователи";
 
@@ -202,10 +186,7 @@ namespace ScooterRental.Pages
 
                 usersSheet.Columns.AutoFit();
 
-                Excel.Worksheet tripsSheet =
-                    (Excel.Worksheet)workbook.Worksheets.Add(
-                        Type.Missing,
-                        usersSheet);
+                Excel.Worksheet tripsSheet = (Excel.Worksheet)workbook.Worksheets.Add(Type.Missing,usersSheet);
 
                 tripsSheet.Name = "Поездки";
 
@@ -231,10 +212,8 @@ namespace ScooterRental.Pages
                     tripsSheet.Cells[row, 3] = trip.User?.FIO ?? "";
                     tripsSheet.Cells[row, 4] = trip.VechicleID;
                     tripsSheet.Cells[row, 5] = trip.VechicleID;
-                    tripsSheet.Cells[row, 6] =
-                        trip.Start_time.ToString("dd.MM.yyyy HH:mm");
-                    tripsSheet.Cells[row, 7] =
-                        trip.End_time.ToString("dd.MM.yyyy HH:mm");
+                    tripsSheet.Cells[row, 6] = trip.Start_time.ToString("dd.MM.yyyy HH:mm");
+                    tripsSheet.Cells[row, 7] = trip.End_time.ToString("dd.MM.yyyy HH:mm");
                     tripsSheet.Cells[row, 8] = trip.TarifID;
                     tripsSheet.Cells[row, 9] = trip.TarifID;               
                     tripsSheet.Cells[row, 10] = trip.Sum;      
@@ -262,25 +241,13 @@ namespace ScooterRental.Pages
                 tripsSheet.Columns.AutoFit();
                 
 
-                workbook.SaveAs(
-                    dialog.FileName,
-                    Excel.XlFileFormat.xlOpenXMLWorkbook);
+                workbook.SaveAs( dialog.FileName, Excel.XlFileFormat.xlOpenXMLWorkbook);
  
-
                 application.Visible = true;
 
                 MessageBox.Show("Отчёт Excel успешно создан!");
-            }
-            catch (Exception ex)
-            {
-                if (workbook != null)
-                    workbook.Close(false);
-
-                application.Quit();
-
-                MessageBox.Show(
-                    "Ошибка при создании отчёта: " + ex.Message);
-            }
+            
+            
         }
 
 
@@ -288,7 +255,7 @@ namespace ScooterRental.Pages
 
         private void ChartButton_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new DiagrammPage());
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

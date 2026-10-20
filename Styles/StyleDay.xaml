@@ -66,6 +66,12 @@
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
+    <Style TargetType="TextBlock" x:Key="Text2">
+        <Setter Property="Foreground" Value="#6b1e2a"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+    </Style>
+
     <Style TargetType="PasswordBox">
         <Setter Property="Height" Value="20"/>
         <Setter Property="Margin" Value="3"/>

@@ -14,10 +14,11 @@
             <ColumnDefinition Width="12*"/>
             <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
-        <Border x:Name="BorderAuth" Style="{DynamicResource StackBorder}" Background="#f59c6a" Margin="10">
+        <Border x:Name="BorderAuth" Style="{DynamicResource StackBorder}" Margin="10">
             <StackPanel Grid.Column="0">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Профиль" Margin="88,10,10,10" Style="{DynamicResource TextOutBorder2}"/>
+                    <Button Content="Сменить тему" Click="Button_Click_2" ToolTip="Смена темы приложения"/>
+                    <TextBlock Text="Профиль" Margin="8" Style="{DynamicResource TextOutBorder2}"/>
                 </StackPanel>
 
                 <StackPanel>
@@ -37,8 +38,8 @@
                         <TextBlock Text="Роль: " Style="{DynamicResource Text}"/>
                         <TextBlock Text="{Binding Roles.Name}" Style="{DynamicResource Text}"/>
                     </StackPanel>
-                    <Button Content="Отчёты" Width="200" Margin="0,250,0,0" Click="Button_Click_1"/>
-                    <Button  Content="Выйти из аккаунта" Click="LeaveButton_Click" Width="200"/>
+                    <Button Content="Отчёты" Width="200" Margin="0,250,0,0" Click="Button_Click_1" ToolTip="Переход на страницу отчётов"/>
+                    <Button  Content="Выйти из аккаунта" Click="LeaveButton_Click" Width="200" ToolTip="Выход из аккаунта"/>
 
 
                 </StackPanel>
@@ -56,8 +57,8 @@
                                     <TextBlock Text="{Binding Password, StringFormat=Пароль: {0}}"/>
                                     <TextBlock Text="{Binding UserStatus, StringFormat=Статус: {0}}"/>
                                     <StackPanel Orientation="Horizontal">
-                                        <Button Content="Редактировать" Click="Button_Click" Height="20" Width="100" HorizontalAlignment="Left"/>
-                                        <Button Style="{DynamicResource BinBtn}" Click="DeleteButton_Click"/>
+                                        <Button Content="Редактировать" Click="Button_Click" Height="20" Width="100" HorizontalAlignment="Left" ToolTip="Редактировать пользователя"/>
+                                        <Button Style="{DynamicResource BinBtn}" Click="DeleteButton_Click" ToolTip="Удалить пользователя"/>
                                     </StackPanel>
                                 </StackPanel>
                                
@@ -75,7 +76,7 @@
                                     <TextBlock Text="{Binding VechiclesID, StringFormat=Транспорт: {0}}"/>
                                     <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
                                     <TextBlock Text="{Binding Rate, StringFormat=Оценка: {0}}"/>
-                                    <Button Content="Ответить" Height="20" Width="100" HorizontalAlignment="Left"/>
+                                    <Button Content="Ответить" Height="20" Width="100" HorizontalAlignment="Left" ToolTip="Ответить на отзыв"/>
                                 </StackPanel>
                                 
                             </DataTemplate>

@@ -8,7 +8,8 @@
         Height="590" Width="900"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Closing="Window_Closing">
+        Closing="Window_Closing"
+        Title="Аренда велосипедов и самокатов">
     <Grid>
         <Frame Source="Pages/RegPage.xaml" NavigationUIVisibility="Hidden"/>
         

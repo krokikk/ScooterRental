@@ -11,11 +11,11 @@
 
     <Grid>
         <StackPanel VerticalAlignment="Center">
-            <Button Content="⮜" Width="40" Height="40" HorizontalAlignment="Left" Click="BackButton_Click"/>
+            <Button Content="⮜" Width="40" Height="40" HorizontalAlignment="Left" Click="BackButton_Click" ToolTip="Назад"/>
             <TextBlock Text="Отчёты" Style="{StaticResource TextOutBorder}" FontSize="28" HorizontalAlignment="Center"/>
-            <Button Content="Импорт в Word" Height="65" Width="300" FontSize="18" Click="WordButton_Click"/>
-            <Button Content="Импорт в Excel" Height="65" Width="300" FontSize="18" Click="ExcelButton_Click"/>
-            <Button Content="Диаграмма" Height="65" Width="300" FontSize="18" Click="ChartButton_Click"/>
+            <Button Content="Импорт в Word" Height="65" Width="300" FontSize="18" Click="WordButton_Click" ToolTip="Ипротр отчёта в word"/>
+            <Button Content="Импорт в Excel" Height="65" Width="300" FontSize="18" Click="ExcelButton_Click" ToolTip="Ипротр отчёта в exel"/>
+            <Button Content="Диаграмма" Height="65" Width="300" FontSize="18" Click="ChartButton_Click" ToolTip="Диаграмма"/>
         </StackPanel>
     </Grid>
 </Page>

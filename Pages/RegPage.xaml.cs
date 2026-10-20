@@ -25,6 +25,7 @@ namespace ScooterRental.Pages
         public RegPage()
         {
             InitializeComponent();
+            AgeDP.DisplayDateEnd = DateTime.Today;
         }
 
 
@@ -44,6 +45,8 @@ namespace ScooterRental.Pages
                 MessageBox.Show("Пароли не совпадают.");
                 return;
             }
+
+            
 
             // проверка соответствия требованиям пароля
             if (PasswordPB.Password.Length >= 6)
@@ -139,7 +142,7 @@ namespace ScooterRental.Pages
         private void PhoneText(object sender, TextChangedEventArgs e)
         {
             string digits = new string(
-                NumberTB.Text.Where(c => char.IsDigit(c) || c == '+').ToArray());
+                NumberTB.Text.Where(c => char.IsDigit(c)).ToArray());
 
             if (NumberTB.Text != digits)
             {

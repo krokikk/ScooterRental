@@ -80,6 +80,12 @@
         <Setter Property="FontFamily" Value="Comic Sans MS"/>
     </Style>
 
+    <Style TargetType="TextBlock" x:Key="Text2">
+        <Setter Property="Foreground" Value="#490b1a"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+    </Style>
+
     <Style TargetType="DatePicker">
         <Setter Property="Margin" Value="3"/>
         <Setter Property="Background" Value="#e5ded2"/>

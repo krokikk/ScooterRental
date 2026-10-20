@@ -18,31 +18,31 @@
                 <TextBlock Text="Редактирование пользователя" Style="{StaticResource TextOutBorder2}" Margin="10"/>
                 <StackPanel>
                     <TextBlock Text="ID пользователя" Style="{StaticResource Text}"/>
-                    <TextBox x:Name="IDTB" IsReadOnly="True" Text="{Binding ID}"/>
+                    <TextBox x:Name="IDTB" IsReadOnly="True" Text="{Binding ID}" ToolTip="ID"/>
                     <TextBlock Text="ФИО" Style="{StaticResource Text}"/>
-                    <TextBox x:Name="FIOTB" Text="{Binding FIO}"/>
+                    <TextBox x:Name="FIOTB" Text="{Binding FIO}" ToolTip="Ввод фио"/>
                     <TextBlock Text="Логин" Style="{StaticResource Text}"/>
-                    <TextBox x:Name="LoginTB" Text="{Binding Login}"/>
+                    <TextBox x:Name="LoginTB" Text="{Binding Login}" ToolTip="Ввод логина"/>
                     <TextBlock Text="Новый пароль" Style="{StaticResource Text}"/>
-                    <PasswordBox x:Name="PasswordPB"/>
+                    <PasswordBox x:Name="PasswordPB" ToolTip="Ввод пароля"/>
                     <TextBlock Text="Возраст" Style="{StaticResource Text}"/>
-                    <DatePicker x:Name="AgeDP" SelectedDate="{Binding Age}"/>
+                    <DatePicker x:Name="AgeDP" SelectedDate="{Binding Age}" ToolTip="Ввод даты рождения"/>
                     <TextBlock Text="Номер телефона" Style="{StaticResource Text}"/>
-                    <TextBox x:Name="PhoneTB" Text="{Binding Phone_number}"/>
+                    <TextBox x:Name="PhoneTB" Text="{Binding Phone_number}" ToolTip="Ввод номера телефона"/>
                     <TextBlock Text="Роль" Style="{StaticResource Text}"/>
-                    <ComboBox x:Name="RoleCB" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+                    <ComboBox x:Name="RoleCB" DisplayMemberPath="Name" SelectedValuePath="ID" ToolTip="Выбор роли"/>
                     <TextBlock Text="Статус пользователя" Style="{StaticResource Text}"/>
-                    <RadioButton x:Name="BlockRb"  Content="True/False"/>
+                    <RadioButton x:Name="BlockRb"  Content="True/False" ToolTip="Статус пользователя"/>
                     <TextBlock Text="Подписка" Style="{StaticResource Text}"/>
-                    <ComboBox x:Name="SubCB" DisplayMemberPath="Name" SelectedValuePath="ID" />
+                    <ComboBox x:Name="SubCB" DisplayMemberPath="Name" SelectedValuePath="ID" ToolTip="Выбор подписки" />
                     <CheckBox x:Name="IsFineCB" Content="Пользователь имеет штраф" />
-                    <TextBlock Text="Сумма штрафа" Style="{StaticResource Text}"/>
+                    <TextBlock Text="Сумма штрафа" Style="{StaticResource Text}" ToolTip="Ввод суммы штрафа"/>
                     <TextBox x:Name="FineSumTB"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Content="Отмена" Width="110" Click="Cancel_Click" Style="{StaticResource ReverseButton}"/>
-                    <Button Content="Сохранить" Width="130" Click="Save_Click"/>
+                    <Button Content="Отмена" Width="110" Click="Cancel_Click" Style="{StaticResource ReverseButton}" ToolTip="Отменить редактирование"/>
+                    <Button Content="Сохранить" Width="130" Click="Save_Click" ToolTip="Сохранить изменения"/>
                 </StackPanel>
             </StackPanel>
         </Border>
